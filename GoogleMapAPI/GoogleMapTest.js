@@ -1,9 +1,6 @@
 // Must install: 
 // npm install @googlemaps/google-maps-services-js]
 
-// I will implement other google map APIs tmr - BUT WE CAN USE LONGITUDE AND LATITUDE
-
-
 const { Client } = require('@googlemaps/google-maps-services-js');
 
 // Uses 2 APIs - Geocoding/TimeZone
