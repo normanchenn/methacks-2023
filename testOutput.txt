@@ -1,0 +1,205 @@
+Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium, Belize, Benin, Bhutan, Bolivia, Bosnia and Herzegovina, Botswana, Brazil, Brunei, Bulgaria, Burkina Faso, Burundi
+Bahamas:
+1. Nassau
+2. Paradise Island
+3. Grand Bahama Island
+4. Andros Island
+5. Exuma Cays Land and Sea Park
+6. Blue Lagoon Island
+7. Abaco Islands
+8. Eleuthera
+9. Bimini
+10. Long Island
+
+Bahrain:
+1. Bahrain Fort
+2. Qal'at al-Bahrain
+3. Al-Fateh Mosque
+4. The Avenues Bahrain
+5. The Khamis Mosque
+6. Tree of Life
+7. Beit Al Qur'an
+8. Arad Fort
+9. Bahrain National Museum
+10. Saar Cultural Heritage Site
+
+Bangladesh:
+1. Cox's Bazar
+2. Sundarbans
+3. Srimangal
+4. Lalbagh Fort
+5. Ahsan Manzil
+6. Baitul Mukarram National Mosque
+7. St. Martin's Island
+8. Sylhet
+9. Paharpur Buddhist Monastery
+10. Curzon Hall
+
+Barbados:
+1. Harrison's Cave
+2. St. Nicholas Abbey
+3. Carlisle Bay
+4. Crane Beach
+5. Andromeda Botanic Gardens
+6. Barbados Wildlife Reserve
+7. Parliament Buildings
+8. Bridgetown
+9. Bathsheba Beach
+10. Oistins Fish Fry
+
+Belarus:
+1. Mir Castle
+2. Brest Fortress
+3. Nesvizh Castle
+4. Minsk Old Town
+5. Pripyatskiy National Park
+6. National Art Museum of Belarus
+7. Belovezhskaya Pushcha National Park
+8. Gomel Palace and Park Ensemble
+9. Vitebsk Regional Museum of Local Lore
+10. Dudutki Open Air Museum
+
+Belgium:
+1. Grand Place
+2. Atomium
+3. Manneken Pis
+4. Belgian Comic Strip Center
+5. Royal Palace of Brussels
+6. Gravensteen Castle
+7. Antwerp Central Station
+8. Royal Museums of Fine Arts of Belgium
+9. Belle Époque buildings in Ostend
+10. Horta Museum
+
+Belize:
+1. Great Blue Hole
+2. Barrier Reef
+3. Xunantunich
+4. Belize Zoo
+5. Actun Tunichil Muknal
+6. Altun Ha
+7. St. John's Cathedral
+8. Cahal Pech
+9. Caracol
+10. Cockscomb Basin Wildlife Sanctuary
+
+Benin:
+1. Royal Palaces of Abomey
+2. Pendjari National Park
+3. Grand Mosque of Porto-Novo
+4. Ganvié
+5. The Door of No Return
+6. Ouidah Museum of History
+7. Dantokpa Market
+8. The Sacred Forest of Kpasse
+9. The Route of the Slave
+10. Musée Honmé
+
+Bhutan:
+1. Tigers Nest Monastery
+2. Punakha Dzong
+3. Gangteng Monastery
+4. Rinpung Dzong
+5. Dochula Pass
+6. Buddha Dordenma Statue
+7. Paro Valley
+8. Chele La Pass
+9. Phobjikha Valley
+10. Jigme Dorji National Park
+
+Bolivia:
+1. Salt flats of Uyuni
+2. Tiwanaku Archeological Site
+3. Yungas Road
+4. Lake Titicaca
+5. Potosi Silver Mines
+6. Isla del Sol
+7. Madidi National Park
+8. Tiwanaku museum
+9. Laguna Colorada
+10. Sorata
+
+Bosnia and Herzegovina:
+1. Stari Most
+2. Kravice Waterfalls
+3. Blagaj Tekke
+4. Vrelo Bosne
+5. Sarajevo Tunnel Museum
+6. Bascarsija
+7. Gazi Husrev-Beg Mosque
+8. Mostar Old Bridge Museum
+9. Una National Park
+10. Tvrdoš Monastery
+
+Botswana:
+1. Okavango Delta
+2. Chobe National Park
+3. Tsodilo Hills
+4. The Central Kalahari Game Reserve
+5. Moremi Game Reserve
+6. Makgadikgadi Pans National Park
+7. Kgalagadi Transfrontier Park
+8. Nxai Pan National Park
+9. Khama Rhino Sanctuary
+10. Linyanti Wildlife Reserve
+
+Brazil:
+1. Christ the Redeemer
+2. Iguazu Falls
+3. Amazon Rainforest
+4. Sugarloaf Mountain
+5. Copacabana Beach
+6. Salvador de Bahia Historic Center
+7. Rio Carnival
+8. Fernando de Noronha
+9. Pantanal Wetlands
+10. Lençóis Maranhenses National Park
+
+Brunei:
+1. Sultan Omar Ali Saifuddin Mosque
+2. Kampong Ayer
+3. Royal Regalia Museum
+4. Ulu Temburong National Park
+5. Brunei Museum
+6. Jerudong Park Playground
+7. Istana Nurul Iman
+8. Tasek Lama Recreational Park
+9. Silver Jubilee Park
+10. Billionth Barrel Monument
+
+Bulgaria:
+1. Rila Monastery
+2. Buzludzha Monument
+3. Seven Rila Lakes
+4. Tsarevets Fortress
+5. Nessebar Old Town
+6. Plovdiv Old Town
+7. Belogradchik Rocks
+8. Devil's Bridge
+9. Boyana Church
+10. Bachkovo Monastery
+
+Burkina Faso:
+1. Ouagadougou Grand Market
+2. Laongo Sculpture Symposium
+3. Cathedral of Ouagadougou
+4. Nazinga Game Ranch
+5. Sindou Peaks
+6. Tengrela Lake
+7. Ouagadougou Zoo
+8. Dioulasso Bobo Stroll
+9. Pikwende Safari
+10. Laongo Granite Quarry
+
+Burundi:
+1. Rusizi National Park
+2. Saga Beach
+3. Kibira National Park
+4. Rusizi River
+5. Karera Waterfalls
+6. Livingstone-Stanley Monument
+7. Bujumbura City Market
+8. Ruvubu National Park
+9. Gitega National Museum
+10. Vyanda Forest Reserve
+

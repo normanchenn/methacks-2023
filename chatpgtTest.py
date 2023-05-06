@@ -1,4 +1,6 @@
 import openai
+import json
+import pprint
 
 openai.api_key = "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"
 
@@ -10,4 +12,6 @@ response = openai.ChatCompletion.create(
     ]
 )
 
-print(response)
+output = json.load(response)
+
+print(output['message'])
