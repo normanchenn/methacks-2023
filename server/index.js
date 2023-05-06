@@ -7,6 +7,7 @@ const app = express();
 const cohere = require("cohere-ai");
 const https = require("https");
 const axios = require("axios");
+const fs = require("fs");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -77,10 +78,6 @@ app.get("/api/cities/:name", async (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.send("hey world, from methacks");
-});
-
 app.get("/api/cohere/citySummary/:city", async (req, res) => {
   try {
     cohere.init(process.env.COHERE_API_KEY);
@@ -115,7 +112,7 @@ app.get("/api/cohere/hobbies/:interest", async (req, res) => {
   }
 });
 
-app.get("/api/cohere/weatherPrediction", async (req, res) => {
+app.get("/api/cohere/weatherPrediction/:activity", async (req, res) => {
   try {
     cohere.init(process.env.COHERE_API_KEY);
     const { activity } = req.params;
@@ -124,8 +121,13 @@ app.get("/api/cohere/weatherPrediction", async (req, res) => {
       model: "09119595-f5d0-42b8-9ea5-02905414db32-ft",
       inputs: activityArray,
     });
-    console.log(JSON.stringify(response, null, 3));
-    res.send(JSON.stringify(response, null, 3));
+    // console.log(JSON.stringify(response, null, 3));
+    // res.send(JSON.stringify(response, null, 3));
+
+    const prediction = response.body.classifications[0].prediction;
+
+    console.log("Prediction:", prediction);
+    res.send(prediction);
   } catch (error) {
     console.error("Error classifying data:", error);
     res.status(400).json({ error: "An error occurred while classifying data" });
@@ -212,81 +214,178 @@ app.get(
   }
 );
 
-// app.get("/api/googlemaps/neareastAirport", async (req, res) => {
-//   const apiKey = process.env.GOOGLE_MAP_API_KEY;
-//   const accessKey = process.env.AVIATION_STACK_API_KEY;
-//   const airportName = 'Toronto Pearson International Airport';
+app.get("/api/googlemaps/neareastAirport", async (req, res) => {
+  const apiKey = process.env.GOOGLE_MAP_API_KEY;
+  const accessKey = process.env.AVIATION_STACK_API_KEY;
+  const airportName = "Toronto Pearson International Airport";
 
-//   try {
-//     const response = await axios.post(
-//       `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
-//     );
-//     const { lat, lng } = response.data.location;
+  try {
+    const response = await axios.post(
+      `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
+    );
+    const { lat, lng } = response.data.location;
 
-//     const location = `${lat},${lng}`;
-//     const radius = 5000000;
-//     const keyword = "airport";
-//     const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location}&radius=${radius}&keyword=${keyword}&key=${apiKey}`;
+    const location = `${lat},${lng}`;
+    const radius = 5000000;
+    const keyword = "airport";
+    const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location}&radius=${radius}&keyword=${keyword}&key=${apiKey}`;
 
-//     try {
-//       const response = await axios.get(placesUrl);
-//       const results = response.data.results;
+    try {
+      const response = await axios.get(placesUrl);
+      const results = response.data.results;
 
-//       if (results.length > 0) {
-//         const airport = results[0];
-//         const airportCode = await getAirportIataCode(airport.name);
-//         console.log("Airport Code:", airportCode); // Log the airport code
-//         const nearestAirport = {
-//           name: airport.name,
-//           code: airportCode,
-//         };
-//         res.json(nearestAirport); // Send the response to the client
-//       } else {
-//         throw new Error("No airports found near the location.");
-//       }
-//     } catch (error) {
-//       console.error("Error retrieving nearest airport:", error);
-//       res.status(500).send("Error retrieving nearest airport");
-//     }
-//   } catch (error) {
-//     console.error("Error getting user location:", error);
-//     res.status(500).send("Error getting user location");
-//   }
+      if (results.length > 0) {
+        const airport = results[0];
+        const airportCode = await getAirportIataCode(airport.name);
+        console.log("Airport Code:", airportCode); // Log the airport code
+        const nearestAirport = {
+          name: airport.name,
+          code: airportCode,
+        };
+        res.json(nearestAirport); // Send the response to the client
+      } else {
+        throw new Error("No airports found near the location.");
+      }
+    } catch (error) {
+      console.error("Error retrieving nearest airport:", error);
+      res.status(500).send("Error retrieving nearest airport");
+    }
+  } catch (error) {
+    console.error("Error getting user location:", error);
+    res.status(500).send("Error getting user location");
+  }
 
-//   async function getAirportIataCode(airportName) {
-//     try {
-//       const response = await axios.get('https://api.aviationstack.com/v1/airports', {
-//         params: {
-//           access_key: accessKey,
-//           search: airportName
-//         }
-//       });
+  async function getAirportIataCode(airportName) {
+    try {
+      const response = await axios.get(
+        "https://api.aviationstack.com/v1/airports",
+        {
+          params: {
+            access_key: accessKey,
+            search: airportName,
+          },
+        }
+      );
 
-//       const airports = response.data.data;
-//       if (airports.length > 0) {
-//         const airport = airports[0];
-//         const iataCode = airport.iata_code;
-//         return iataCode;
-//       } else {
-//         throw new Error(`No airport found for the name "${airportName}"`);
-//       }
-//     } catch (error) {
-//       throw new Error('Error retrieving airport information: ' + error.message);
-//     }
-//   }
+      const airports = response.data.data;
+      if (airports.length > 0) {
+        const airport = airports[0];
+        const iataCode = airport.iata_code;
+        return iataCode;
+      } else {
+        throw new Error(`No airport found for the name "${airportName}"`);
+      }
+    } catch (error) {
+      throw new Error("Error retrieving airport information: " + error.message);
+    }
+  }
 
-//   try {
-//     const iataCode = await getAirportIataCode(airportName);
-//     console.log(`The IATA code for ${airportName} is ${iataCode}`);
-//   } catch (error) {
-//     console.error(error.message);
-//   }
-// });
-
+  try {
+    const iataCode = await getAirportIataCode(airportName);
+    console.log(`The IATA code for ${airportName} is ${iataCode}`);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 app.get("/", (req, res) => {
-  res.send("Hello world, from methacks");
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
+  const formattedDate = `${year}-${month}-${day}`;
+
+  const currentSeason = getSeason(currentDate);
+  console.log(`The current season is: ${currentSeason}`);
+
+  const filePath = "./attractions.txt";
+  readFileToString(filePath, (error, fileContent) => {
+    if (error) {
+      console.error("Error reading file:", error);
+      return;
+    }
+
+    // console.log(fileContent);
+
+    const countryName = "China";
+
+    const attractions = getTouristAttractions(fileContent, countryName);
+    console.log(attractions);
+  });
+
+  res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
 });
+
+function getSeason(date) {
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  if ((month === 12 && day >= 21) || (month <= 2 && day < 20)) {
+    return "Winter";
+  } else if (month >= 3 && month <= 5) {
+    return "Spring";
+  } else if (month >= 6 && month <= 8) {
+    return "Summer";
+  } else {
+    return "Autumn";
+  }
+}
+
+function getTouristAttractions(text, countryName) {
+  const lines = text.split("\n");
+  const attractions = [];
+
+  let isTargetCountry = false;
+  for (let line of lines) {
+    line = line.trim();
+
+    if (line === countryName) {
+      isTargetCountry = true;
+    } else if (line.startsWith(countryName)) {
+      isTargetCountry = false;
+    } else if (isTargetCountry && line !== "") {
+      const attraction = line.split(". ")[1];
+      attractions.push(attraction);
+    }
+    if (attractions.length === 10) {
+      break;
+    }
+  }
+  return attractions;
+}
+
+function readFileToString(filePath, callback) {
+  fs.readFile(filePath, "utf-8", (error, data) => {
+    if (error) {
+      callback(error, null);
+      return;
+    }
+
+    const fileContent = data;
+    callback(null, fileContent);
+  });
+}
+
+function classifyAttractions(attractions) {
+  const weatherDependentAttractions = [];
+  for (let i = 0; i < attractions.length; i++) {
+    const attraction = attractions[i];
+    try {
+      const response = axios.get(
+        `/api/cohere/weatherPrediction/${attraction}`
+      );
+      const prediction = response.data;
+
+      console.log(`Prediction for ${attraction}: ${prediction}`);
+
+      if (prediction === "no") {
+        weatherDependentAttractions.push(attraction);
+      }
+    } catch (error) {
+      console.error(`Error classifying ${attraction}:`, error);
+    }
+  }
+  return weatherDependentAttractions;
+}
 
 const PORT = 3210;
 app.listen(PORT, () => {
