@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
+// ADD LONGITUDE AND LATITUDE COORDINATES
 const citySchema = new mongoose.Schema({
   name: { type: String, required: true },
   country: { type: String, required: true },
@@ -28,27 +29,31 @@ const citySchema = new mongoose.Schema({
   emergency_service_number: { type: Number, required: true },
   local_customs: [{ type: String }],
   local_cuisine: [{ type: String }],
+  latitude: { type:Number, required: true},
+  longitude: { type:Number, required: true},
 });
 
 const City = mongoose.model("City2", citySchema);
 
 const newCity = new City({
-  name: "Paris",
-  country: "France",
-  region: "Île-de-France",
-  population: 2.14e6,
-  timezone: "CET",
-  currency: "Euro",
-  language: "French",
-  population_attractions: [
-    "Eiffel Tower",
-    "Louvre Museum",
-    "Notre-Dame Cathedral",
-  ],
-  emergency_service_number: 112,
-  local_customs: ["Kissing on the cheek", "No tipping in restaurants"],
-  local_cuisine: ["Croissants", "Escargots", "Macarons"],
-});
+    name: "Sydney",
+    country: "Australia",
+    region: "New South Wales",
+    population: 5.31e6,
+    timezone: "AEST",
+    currency: "Australian dollar",
+    language: "English",
+    population_attractions: [
+      "Sydney Opera House",
+      "Bondi Beach",
+      "Harbour Bridge",
+    ],
+    emergency_service_number: 000,
+    local_customs: ["BBQs on the beach", "Surfing in the ocean"],
+    local_cuisine: ["Meat pies", "Fish and chips", "Vegemite"],
+    latitude: -33.8688,
+    longitude: 151.2093
+  });  
 // newCity.save()
 //     .then(city => {
 //         console.log(`saved ${city.name} to the database`);
@@ -96,7 +101,24 @@ app.get("/api/cohere/citySummary/:city", async (req, res) => {
   }
 });
 
-app.get("/api/cohere/weatherPrediction/:activity", async (req, res) => {
+app.get("/api/cohere/hobbies/:interest", async (req, res) => {
+    try {
+      cohere.init(process.env.COHERE_API_KEY);
+      const {interest} = req.params;
+      const response = await cohere.generate({
+        prompt: `${interest}`,
+        model: "957224c1-311c-460f-ac83-71afb5ad6dc2-ft",
+        max_tokens: 100,
+      });
+      console.log(JSON.stringify(response, null, 3));
+      res.send(JSON.stringify(response, null, 3));
+    } catch (error) {
+      console.error("Error classifying data:", error);
+      res.status(400).json({ error: "An error occurred while classifying data" });
+    }
+  });
+
+app.get("/api/cohere/weatherPrediction", async (req, res) => {
   try {
     cohere.init(process.env.COHERE_API_KEY);
     const {activity} = req.params;

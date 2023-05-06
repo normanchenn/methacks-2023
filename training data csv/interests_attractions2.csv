@@ -1,0 +1,200 @@
+park,outdoor
+hiking trail,outdoor
+beach,outdoor
+campground,outdoor
+fishing spot,outdoor
+waterfall,outdoor
+botanical garden,outdoor
+scenic drive,outdoor
+zoological park,outdoor
+national park,outdoor
+museum,art
+gallery,art
+street art,art
+sculpture garden,art
+public art,art
+art fair,art
+art studio,art
+art auction,art
+art festival,art
+art installation,art
+historical landmark,history
+museum,history
+memorial,history
+historical society,history
+archaeological site,history
+fortification,history
+historic house,history
+historic district,history
+historic ship,history
+historical monument,history
+concert venue,music
+music festival,music
+opera house,music
+jazz club,music
+record store,music
+music museum,music
+rock club,music
+blues club,music
+symphony orchestra,music
+live music venue,music
+restaurant,food
+food tour,food
+winery,food
+brewery,food
+food market,food
+food truck,food
+cooking class,food
+chocolate factory,food
+coffee shop,food
+tea room,food
+aquarium,science
+planetarium,science
+science museum,science
+observatory,science
+zoological park,science
+science center,science
+nature center,science
+botanical garden,science
+aviation museum,science
+technology museum,science
+mall,shopping
+marketplace,shopping
+boutique,shopping
+flea market,shopping
+antique shop,shopping
+department store,shopping
+outlet store,shopping
+thrift store,shopping
+artisan market,shopping
+craft fair,shopping
+stadium,sports
+golf course,sports
+racetrack,sports
+skate park,sports
+tennis court,sports
+water park,sports
+theme park,sports
+amusement park,sports
+miniature golf,sports
+extreme sports park,sports
+performing arts center,theater
+broadway theater,theater
+opera house,theater
+movie theater,theater
+comedy club,theater
+dinner theater,theater
+improv theater,theater
+puppet theater,theater
+shakespearean theater,theater
+musical theater,theater
+library,reading
+bookstore,reading
+literary event,reading
+botanical garden,gardening
+flower show,gardening
+nursery,gardening
+fishing charter,fishing
+pond,fishing
+river,fishing
+cooking class,cooking
+farmers market,cooking
+kitchen store,cooking
+photo walk,photography
+photography class,photography
+photography exhibit,photography
+winery tour,wine-tasting
+wine festival,wine-tasting
+wine tasting room,wine-tasting
+yoga class,yoga
+yoga retreat,yoga
+yoga studio,yoga
+city tour,sightseeing
+landmark tour,sightseeing
+scenic drive,sightseeing
+karaoke bar,karaoke
+karaoke lounge,karaoke
+karaoke room,karaoke
+beach day,beaches
+beach walk,beaches
+beach volleyball,beaches
+craft fair,crafts
+craft workshop,crafts
+craft store,crafts
+dance class,dance
+dance party,dance
+dance performance,dance
+hiking trail,hiking
+nature walk,hiking
+park,hiking
+beer festival,beer-tasting
+beer garden,beer-tasting
+beer tasting room,beer-tasting
+movie theater,movies
+drive-in movie,movies
+outdoor movie,movies
+fashion show,fashion
+vintage shop,fashion
+clothing store,fashion
+board game cafe,board-games
+board game store,board-games
+board game tournament,board-games
+comedy club,comedy
+comedy show,comedy
+improv show,comedy
+dog park,pets
+cat cafe,pets
+petting zoo,pets
+boat tour,boat-rides
+kayak tour,boat-rides
+riverboat cruise,boat-rides
+knitting circle,knitting
+knitting class,knitting
+yarn store,knitting
+pottery class,pottery
+pottery studio,pottery
+pottery shop,pottery
+spa day,spas
+massage,spas
+sauna,spas
+zip line tour,zip-lining
+adventure park,zip-lining
+treetop adventure,zip-lining
+escape room,escape-rooms
+virtual escape room,escape-rooms
+mystery game,escape-rooms
+board game cafe,board-games
+board game store,board-games
+board game tournament,board-games
+skate park,skateboarding
+skateboard shop,skateboarding
+skateboarding lesson,skateboarding
+boxing gym,boxing
+boxing class,boxing
+boxing match,boxing
+science museum,museums
+art museum,museums
+history museum,museums
+kite festival,kite-flying
+kite flying lesson,kite-flying
+kite store,kite-flying
+gym,fitness
+running trail,fitness
+yoga studio,fitness
+rock climbing gym,fitness
+park,fitness
+scenic,photography
+museum,photography
+cityscape,photography
+beach,photography
+park,photography
+indie theater,movies
+blockbuster theater,movies
+drive-in theater,movies
+movie museum,movies
+film festival,movies
+botanical garden,gardening
+nursery,gardening
+farmers market,gardening
+community garden,gardening
+landscape,gardening

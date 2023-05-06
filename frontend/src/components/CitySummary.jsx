@@ -11,6 +11,7 @@ export const CitySummary = () => {
             .then(data => {
                 console.log(data);
                 setInfo(data);
+                sessionStorage.setItem("cityData", JSON.stringify(data));
             })
             .catch(error => {
                 console.log(error);
@@ -29,8 +30,8 @@ export const CitySummary = () => {
         {info.currency && <div>Currency: {info.currency}</div>}
         {info.population && <div>Population: {info.population}</div>}
         {info.language && <div>Language: {info.language}</div>}
-        {info.popular_attractions && info.popular_attractions.map(attraction => (<p>{attraction}</p>))}
-        {info.local_cuisine && info.local_cuisine.map(dish => (<div>Dish: {dish}</div>))}
+        {info.popular_attractions && info.popular_attractions.map(attraction => (<p key={attraction}>{attraction}</p>))}
+        {info.local_cuisine && info.local_cuisine.map(dish => (<div key={dish}>Dish: {dish}</div>))}
         {info.latitude && <div>Latitude: {info.latitude}</div>}
         {info.longitude && <div>Longitude: {info.longitude}</div>}
     </div>
