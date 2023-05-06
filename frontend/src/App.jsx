@@ -1,4 +1,5 @@
 import { CitySummary } from "./components/CitySummary"
+import CityTimezone from "./components/CityTimezone";
 import DynamicMap from "./components/DynamicMap";
 
 
@@ -7,7 +8,8 @@ function App() {
       <div>
         frontend
         <CitySummary />
-        <DynamicMap  />
+        <CityTimezone  />
+        <DynamicMap />
       </div>
       
   )
