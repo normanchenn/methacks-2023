@@ -198,3 +198,583 @@ nursery,gardening
 farmers market,gardening
 community garden,gardening
 landscape,gardening
+vintage-shop,fashion
+boutique,fashion
+department-store,fashion
+fashion-museum,fashion
+designer-showroom,fashion
+hiking-trail,nature
+waterfall,nature
+wildlife-sanctuary,nature
+camping-site,nature
+arboretum,nature
+cooking-class,cooking
+culinary-tour,cooking
+farm-to-table-restaurant,cooking
+kitchen-supply-store,cooking
+farm-visit,cooking
+dance-performance,performing-arts
+opera,performing-arts
+orchestra,performing-arts
+comedy-club,performing-arts
+performance-art-venue,performing-arts
+computer-museum,technology
+tech-startup-tour,technology
+robotics-workshop,technology
+virtual-reality-experience,technology
+innovation-lab,technology
+kids-museum,parenting
+parenting-class,parenting
+family-friendly-restaurant,parenting
+playground,parenting
+children's-theater,parenting
+airport,travel
+road-trip,travel
+cruise,travel
+travel-agency,travel
+travel-show,travel
+art-supply-store,crafts
+arts-and-crafts-fair,crafts
+pottery-studio,crafts
+quilting-class,crafts
+knitting-circle,crafts
+ethics-lecture,philosophy
+philosophy-museum,philosophy
+philosophy-cafe,philosophy
+debate-club,philosophy
+book-club,philosophy
+meditation-center,spirituality
+retreat,spirituality
+religious-landmark,spirituality
+yoga-retreat,spirituality
+spiritual-community,spirituality
+sci-fi-convention,science-fiction
+sci-fi-museum,science-fiction
+sci-fi-movie-marathon,science-fiction
+sci-fi-book-club,science-fiction
+sci-fi-escape-room,science-fiction
+park,outdoor-activities
+hiking-trail,outdoor-activities
+beach,outdoor-activities
+campground,outdoor-activities
+fishing-spot,outdoor-activities
+waterfall,outdoor-activities
+botanical-garden,outdoor-activities
+scenic-drive,outdoor-activities
+zoological-park,outdoor-activities
+national-park,outdoor-activities
+museum,art
+gallery,art
+street-art,art
+sculpture-garden,art
+public-art,art
+art-fair,art
+art-studio,art
+art-auction,art
+art-festival,art
+art-installation,art
+historical-landmark,history
+museum,history
+memorial,history
+historical-society,history
+archaeological-site,history
+fortification,history
+historic-house,history
+historic-district,history
+historic-ship,history
+historical-monument,history
+concert-venue,music
+music-festival,music
+opera-house,music
+jazz-club,music
+record-store,music
+music-museum,music
+rock-club,music
+blues-club,music
+symphony-orchestra,music
+live-music-venue,music
+restaurant,food
+food-tour,food
+winery,food
+brewery,food
+food-market,food
+food-truck,food
+cooking-class,food
+chocolate-factory,food
+coffee-shop,food
+tea-room,food
+aquarium,science
+planetarium,science
+science-museum,science
+observatory,science
+zoological-park,science
+science-center,science
+nature-center,science
+botanical-garden,science
+aviation-museum,science
+technology-museum,science
+mall,shopping
+marketplace,shopping
+boutique,shopping
+flea-market,shopping
+antique-shop,shopping
+department-store,shopping
+outlet-store,shopping
+thrift-store,shopping
+artisan-market,shopping
+craft-fair,shopping
+stadium,sports
+golf-course,sports
+racetrack,sports
+skate-park,sports
+tennis-court,sports
+water-park,sports
+theme-park,sports
+amusement-park,sports
+miniature-golf,sports
+extreme-sports-park,sports
+performing-arts-center,theater
+broadway-theater,theater
+opera-house,theater
+movie-theater,theater
+comedy-club,theater
+dinner-theater,theater
+improv-theater,theater
+puppet-theater,theater
+shakespearean-theater,theater
+musical-theater,theater
+library,reading
+bookstore,reading
+literary-event,reading
+botanical-garden,gardening
+flower-show,gardening
+nursery,gardening
+fishing-charter,fishing
+pond,fishing
+river,fishing
+cooking-class,cooking
+farmers-market,cooking
+kitchen-store,cooking
+photo-walk,photography
+photography-class,photography
+photography-exhibit,photography
+winery-tour,wine-tasting
+wine-festival,wine-tasting
+wine-tasting-room,wine-tasting
+yoga-class,yoga
+yoga-retreat,yoga
+yoga-studio,yoga
+city-tour,sightseeing
+landmark-tour,sightseeing
+scenic-drive,sightseeing
+karaoke-bar,karaoke
+karaoke-lounge,karaoke
+karaoke-room,karaoke
+beach-day,beaches
+beach-walk,beaches
+beach-volleyball,beaches
+craft-fair,crafts
+craft-workshop,crafts
+craft-store,crafts
+dance-class,dance
+dance-party,dance
+dance-performance,dance
+hiking-trail,hiking
+nature-walk,hiking
+park,hiking
+beer-festival,beer-tasting
+beer-garden,beer-tasting
+bookstore,shopping
+comic-book-store,shopping
+record-store,shopping
+thrift-store,shopping
+vintage-store,shopping
+antique-store,shopping
+flea-market,shopping
+artisan-market,shopping
+craft-fair,shopping
+football-stadium,sports
+basketball-court,sports
+volleyball-court,sports
+skate park,sports
+surfing spot,sports
+beach volleyball,sports
+amusement park,sports
+park,outdoor-activities
+hiking trail,outdoor-activities
+beach,outdoor-activities
+campground,outdoor-activities
+fishing spot,outdoor-activities
+waterfall,outdoor-activities
+botanical garden,outdoor-activities
+scenic drive,outdoor-activities
+zoological park,outdoor-activities
+national park,outdoor-activities
+museum,art
+gallery,art
+street art,art
+sculpture garden,art
+public art,art
+art fair,art
+art studio,art
+art auction,art
+art festival,art
+art installation,art
+historical landmark,history
+museum,history
+memorial,history
+historical society,history
+archaeological site,history
+fortification,history
+historic house,history
+historic district,history
+historic ship,history
+concert venue,music
+music festival,music
+opera house,music
+jazz club,music
+record store,music
+music museum,music
+rock club,music
+blues club,music
+symphony orchestra,music
+live music venue,music
+restaurant,food
+food tour,food
+winery,food
+brewery,food
+food market,food
+food truck,food
+cooking class,food
+chocolate factory,food
+coffee shop,food
+tea room,food
+aquarium,science
+planetarium,science
+science museum,science
+observatory,science
+zoological park,science
+science center,science
+nature center,science
+botanical garden,science
+aviation museum,science
+technology museum,science
+city tour,sightseeing
+landmark tour,sightseeing
+scenic drive,sightseeing
+performing arts center,theater
+broadway theater,theater
+opera house,theater
+movie theater,theater
+comedy club,theater
+dinner theater,theater
+improv theater,theater
+puppet theater,theater
+shakespearean theater,theater
+musical theater,theater
+library,reading
+bookstore,reading
+literary event,reading
+botanical garden,gardening
+flower show,gardening
+nursery,gardening
+fishing charter,fishing
+pond,fishing
+river,fishing
+cooking class,cooking
+farmers market,cooking
+kitchen store,cooking
+photo walk,photography
+photography class,photography
+photography exhibit,photography
+winery tour,wine-tasting
+wine festival,wine-tasting
+wine tasting room,wine-tasting
+yoga class,yoga
+yoga retreat,yoga
+yoga studio,yoga
+karaoke bar,karaoke
+karaoke lounge,karaoke
+karaoke-room,karaoke
+beach-day,beaches
+beach-walk,beaches
+beach-volleyball,beaches
+craft-fair,crafts
+craft-workshop,crafts
+craft-store,crafts
+dance-class,dance
+dance-party,dance
+dance-performance,dance
+hiking-trail,hiking
+nature-walk,hiking
+park,hiking
+beer-festival,beer-tasting
+beer-garden,beer-tasting
+beer-tasting-room,beer-tasting
+movie-theater,movies
+drive-in,movies
+rock-climbing,Outdoor-activities
+zipline-tour,Outdoor-activities
+skydiving,Outdoor-activities
+street-performance,Art
+sculpture-park,Art
+art-exhibition,Art
+battlefield,History
+presidential-museum,History
+historic-train-ride,History
+karaoke-bar,Music
+live-concert,Music
+classical-concert,Music
+food-and-wine-pairing,Food
+cooking-competition,Food
+farm-to-table-restaurant,Food
+space-museum,Science
+dinosaur-exhibit,Science
+robotics-lab,Science
+vintage-flea-market,Shopping
+farmers-market,Shopping
+artisanal-bakery,Shopping
+rock-climbing-gym,Sports
+batting-cage,Sports
+paintball-field,Sports
+musical,Theater
+drama,Theater
+one-man-show,Theater
+poetry-slam,Reading
+community-garden,Gardening
+cactus-garden,Gardening
+topiary-garden,Gardening
+deep-sea-fishing,Fishing
+fly-fishing,Fishing
+lake-fishing,Fishing
+international-cuisine-class,Cooking
+pastry-class,Cooking
+wine-and-cheese-class,Cooking
+wildlife-photography-safari,Photography
+portrait-photography-studio,Photography
+fashion-photography-workshop,Photography
+vineyard-picnic,Wine-tasting
+wine-and-cheese-pairing,Wine-tasting
+meditation-retreat,Yoga
+acroyoga-class,Yoga
+paddleboard-yoga,Yoga
+boat-tour,Sightseeing
+helicopter-tour,Sightseeing
+ghost-tour,Sightseeing
+private-room-rental,Karaoke
+karaoke-contest,Karaoke
+karaoke-DJ,Karaoke
+surfing-lesson,Beaches
+beach-yoga-class,Beaches
+woodworking-workshop,Crafts
+jewelry-making-class,Crafts
+pottery-wheel-class,Crafts
+salsa-dancing,Dance
+ballroom-dancing,Dance
+hip-hop-dance-class,Dance
+mountain-hiking,Hiking
+guided-nature-hike,Hiking
+coastal-hiking,Hiking
+brewery-tour,Beer-tasting
+beer-and-food-pairing,Beer-tasting
+homebrewing-class,Beer-tasting
+thrift-store-crawl,Fashion
+clothing-swap-party,Fashion
+fashion-illustration-class,Fashion
+game-night-at-a-bar,Board-games
+escape-room-game,Board-games
+Dungeons-&-Dragons-campaign,Board-games
+stand-up-comedy,Comedy
+improv-comedy-class,Comedy
+sketch-comedy-show,Comedy
+animal-sanctuary-visit,Pets
+horseback-riding,Pets
+pet-friendly-hiking-trail,Pets
+improv-comedy-class,Comedy
+sketch-comedy-show,Comedy
+animal-sanctuary-visit,Pets
+horseback-riding,Pets
+pet-friendly-hiking-trail,Pets
+sunset-cruise,Boat-rides
+paddleboat-rental,Boat-rides
+water-taxi-ride,Boat-rides
+crochet-workshop,Knitting
+knitting-for-charity,Knitting
+knitting-retreat,Knitting
+hand-building-class,Pottery
+ceramic-painting-workshop,Pottery
+pottery-throwing-class,Pottery
+hot-springs-visit,Spas
+float-tank-session,Spas
+facial-and-massage-package,Spas
+indoor-zip-line-course,Zip-lining
+night-zip-line-tour,Zip-lining
+tandem-zip-line,Zip-lining
+puzzle-hunt,Escape-rooms
+escape-room-competition,Escape-rooms
+virtual-reality-escape-room,Escape-rooms
+skateboard-ramp-rental,Skateboarding
+longboard-cruising-session,Skateboarding
+skateboard-deck-design-workshop,Skateboarding
+boxing-ring-rental,Boxing
+amateur-boxing-match,Boxing
+boxing-fitness-class,Boxing
+aviation-museum,Museums
+natural-history-museum,Museums
+board-game cafe,board-games
+strategy game tournament,board-games
+card game night,board-games
+board game swap meet,board-games
+role-playing game session,board-games
+harbor tour,boat-rides
+whale watching excursion,boat-rides
+sunset sail,boat-rides
+fishing charter,boat-rides
+cruise along a river,boat-rides
+knitting circle,Knitting
+yarn dyeing workshop,Knitting
+loom weaving class,Knitting
+knitted toy-making workshop,Knitting
+sweater knitting class,Knitting
+ballroom dance class,Dance
+salsa dancing lessons,Dance
+hip-hop dance workshop,Dance
+swing dance party,Dance
+ballet performance,Dance
+adventure park zip line course,Zip-lining
+zipline over a canyon,Zip-lining
+ziplining through a forest,Zip-lining
+zipline over a lake,Zip-lining
+ziplining with ocean views,Zip-lining
+boxing gym,boxing
+boxing equipment rental,boxing
+boxing match viewing party,boxing
+boxing technique workshop,boxing
+boxing workout routine session,boxing
+pick-up basketball game,Sports
+youth soccer league,Sports
+flag football tournament,Sports
+tennis match,Sports
+track and field meet,Sports
+fly fishing lesson,fishing
+deep sea fishing excursion,fishing
+ice fishing trip,fishing
+angling competition,fishing
+fishing gear rental,fishing
+couples massage,spas
+detoxifying body wrap,spas
+facial rejuvenation treatment,spas
+manicure and pedicure,spas
+aromatherapy session,spas
+concert in the park,Music
+music festival,Music
+music trivia night,Music
+live jazz performance,Music
+classical music concert,Music
+improv comedy show,Comedy
+comedy club open mic night,Comedy
+stand-up comedy performance,Comedy
+comedy film screening,Comedy
+roast battle competition,Comedy
+knitting and crocheting supplies store,Crafts
+scrapbooking workshop,Crafts
+origami class,Crafts
+quilting bee,Crafts
+beading and jewelry making workshop,Crafts
+fashion design course,Fashion
+couture fashion show,Fashion
+fashion photography exhibition,Fashion
+textile arts museum,Fashion
+fashion accessories swap meet,Fashion
+hot springs resort,Sightseeing
+city walking tour,Sightseeing
+sunset viewing spot,Sightseeing
+tour of historical landmarks,Sightseeing
+guided architectural tour,Sightseeing
+surfing lesson,Beaches
+beach yoga session,Beaches
+beach volleyball tournament,Beaches
+beach bonfire party,Beaches
+mixed martial arts competition,Boxing
+amateur wrestling match,Boxing
+kickboxing fitness class,Boxing
+boxing gym sparring session,Boxing
+judo training workshop,Boxing
+photography studio rental,Photography
+nature photography workshop,Photography
+portrait photography session,Photography
+street photography walking tour,Photography
+landscape photography exhibition,Photography
+yoga retreat,Yoga
+acroyoga workshop,Yoga
+meditation session,Yoga
+yoga teacher training,Yoga
+hot yoga class,Yoga
+food tour,Food
+cooking class,Food
+wine and cheese tasting,Food
+beer brewery tour,Food
+culinary festival,Food
+science museum,Science
+planetarium show,Science
+botany research center,Science
+observatory visit,Science
+interactive science exhibition,Science
+craft market,Shopping
+thrift store shopping,Shopping
+antique fair,Shopping
+park,outdoor
+hiking trail,outdoor
+beach,outdoor
+campground,outdoor
+fishing spot,outdoor
+waterfall,outdoor
+botanical garden,outdoor
+scenic drive,outdoor
+zoological park,outdoor
+national park,outdoor
+museum,art
+gallery,art
+street art,art
+sculpture garden,art
+public art,art
+art fair,art
+art studio,art
+art auction,art
+art festival,art
+art installation,art
+historical landmark,history
+museum,history
+memorial,history
+historical society,history
+archaeological site,history
+fortification,history
+gardening,outdoor
+beer-tasting,food
+skateboarding,outdoor
+kite-flying,outdoor
+fishing,outdoor
+karaoke,music
+zip-lining,outdoor
+reading,indoor
+museums,history
+reading,indoor
+escape-rooms,entertainment
+museums,history
+history,history
+art,art
+hiking,outdoor
+pets,animal
+skateboarding,outdoor
+wine-tasting,food
+pets,animal
+pottery,art
+comedy,entertainment
+boat-rides,outdoor
+escape-rooms,entertainment
+cooking,food
+board-games,entertainment
+theater,entertainment
+knitting,crafts
+pottery,art
+outdoor-activities,outdoor

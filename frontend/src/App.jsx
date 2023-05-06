@@ -1,7 +1,9 @@
 import { CitySummary } from "./components/CitySummary";
-import DynamicMap from "./components/DynamicMap";
+// import DynamicMap from "./components/DynamicMap";
 import { UserPreferences } from "./components/UserPreferences";
 import { GenerateRec } from "./components/GenerateRec";
+import { Other } from "./components/Other";
+import './index.css';
 
 function App() {
   return (
@@ -10,8 +12,9 @@ function App() {
         <CitySummary />
         <UserPreferences />
         <GenerateRec />
-        <CityTimezone  />
-        <DynamicMap />
+        <Other />
+        {/* <CityTimezone  /> */}
+        {/* <DynamicMap /> */}
       </div>
       
   )
