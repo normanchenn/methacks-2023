@@ -212,19 +212,77 @@ app.get(
   }
 );
 
-app.get("/api/googlemaps/currentLocation", async (req, res) => {
-  const apiKey = process.env.GOOGLE_MAP_API_KEY;
-  axios
-    .post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`)
-    .then((response) => {
-      const {lat, lng} = response.data.location;
-      res.json({ latitude: lat, longitude: lng });
-    })
-    .catch((error) => {
-      console.error("Error getting user location:", error);
-      res.status(500).send("Error getting user location");
-    });
-});
+// app.get("/api/googlemaps/neareastAirport", async (req, res) => {
+//   const apiKey = process.env.GOOGLE_MAP_API_KEY;
+//   const accessKey = process.env.AVIATION_STACK_API_KEY;
+//   const airportName = 'Toronto Pearson International Airport';
+
+//   try {
+//     const response = await axios.post(
+//       `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
+//     );
+//     const { lat, lng } = response.data.location;
+
+//     const location = `${lat},${lng}`;
+//     const radius = 5000000;
+//     const keyword = "airport";
+//     const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location}&radius=${radius}&keyword=${keyword}&key=${apiKey}`;
+
+//     try {
+//       const response = await axios.get(placesUrl);
+//       const results = response.data.results;
+
+//       if (results.length > 0) {
+//         const airport = results[0];
+//         const airportCode = await getAirportIataCode(airport.name);
+//         console.log("Airport Code:", airportCode); // Log the airport code
+//         const nearestAirport = {
+//           name: airport.name,
+//           code: airportCode,
+//         };
+//         res.json(nearestAirport); // Send the response to the client
+//       } else {
+//         throw new Error("No airports found near the location.");
+//       }
+//     } catch (error) {
+//       console.error("Error retrieving nearest airport:", error);
+//       res.status(500).send("Error retrieving nearest airport");
+//     }
+//   } catch (error) {
+//     console.error("Error getting user location:", error);
+//     res.status(500).send("Error getting user location");
+//   }
+
+//   async function getAirportIataCode(airportName) {
+//     try {
+//       const response = await axios.get('https://api.aviationstack.com/v1/airports', {
+//         params: {
+//           access_key: accessKey,
+//           search: airportName
+//         }
+//       });
+
+//       const airports = response.data.data;
+//       if (airports.length > 0) {
+//         const airport = airports[0];
+//         const iataCode = airport.iata_code;
+//         return iataCode;
+//       } else {
+//         throw new Error(`No airport found for the name "${airportName}"`);
+//       }
+//     } catch (error) {
+//       throw new Error('Error retrieving airport information: ' + error.message);
+//     }
+//   }
+
+//   try {
+//     const iataCode = await getAirportIataCode(airportName);
+//     console.log(`The IATA code for ${airportName} is ${iataCode}`);
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// });
+
 
 app.get("/", (req, res) => {
   res.send("Hello world, from methacks");
