@@ -1,7 +1,7 @@
 // npm install --save google-maps-react
 
 import React, { useState, useEffect } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 const mapStyles = {
   width: '50%',
@@ -33,10 +33,14 @@ const MapContainer = (props) => {
   return (
     <Map
       google={google}
-      zoom={8}
+      zoom={8}  
       style={mapStyles}
       center={{ lat: latitude || 0, lng: longitude || 0 }}
-    />
+    >
+      <Marker
+        position={{ lat: latitude || 0, lng: longitude || 0 }}
+      />
+    </Map>
   );
 };
 
@@ -45,6 +49,7 @@ const MapContainerWrapper = GoogleApiWrapper({
 })(MapContainer);
 
 export default MapContainerWrapper;
+
 
 
 
