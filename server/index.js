@@ -17,6 +17,16 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
 });
 
+const airportSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    code: { type: String, required: true },
+})
+const Airport = mongoose.model("AirportCodes", airportSchema);
+const newAirport = new Airport({
+    name: "",
+    code: "",
+});
+
 // ADD LONGITUDE AND LATITUDE COORDINATES
 const citySchema = new mongoose.Schema({
   name: { type: String, required: true },
