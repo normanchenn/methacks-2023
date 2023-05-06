@@ -2148,3 +2148,218 @@ Trinidad and Tobago
 9. Asa Wright Nature Centre
 10. Chaguaramas Boardwalk
 
+Tunisia
+1. Carthage
+2. Sidi Bou Said
+3. Bardo Museum
+4. Tunisia's Sahara Desert
+5. Tunis Medina
+6. El Djem Amphitheatre
+7. Hammamet
+8. Kairouan
+9. Djerba Island
+10. Dougga Archaeological Site
+
+Turkey
+1. Istanbul
+2. Cappadocia
+3. Ephesus
+4. Pamukkale
+5. Bodrum
+6. Antalya
+7. Gallipoli
+8. Troy
+9. Mount Nemrut
+10. Sumela Monastery
+
+Turkmenistan
+1. Darvaza Gas Crater
+2. Ashgabat city
+3. Ancient city of Merv
+4. Kow-Ata Underground Lake
+5. Yangykala Canyon
+6. Nisa Historical and Cultural Monument
+7. Konye-Urgench Historical and Architectural Reserve
+8. Geok Tepe Fortress
+9. Gonur Depe Archaeological Site
+10. Sumbar River Canyon.
+
+Tuvalu
+1. Funafuti Lagoon
+2. Nanumea Atoll
+3. Nanumanga Atoll
+4. Talava Arches
+5. Nui Atoll
+6. Funafala Islet
+7. Vaitupu Atoll
+8. Niutao Island
+9. Nukufetau Atoll
+10. Motulalo Sanctuary
+
+Uganda
+1. Bwindi Impenetrable National Park
+2. Murchison Falls National Park
+3. Queen Elizabeth National Park
+4. Kibale National Park
+5. Lake Mburo National Park
+6. Ssese Islands
+7. Ziwa Rhino Sanctuary
+8. Jinja and the Source of the Nile
+9. Rwenzori Mountains National Park
+10. Mgahinga Gorilla National Park
+
+Ukraine
+1. Kyiv-Pechersk Lavra
+2. St. Sophia's Cathedral
+3. Lviv Old Town
+4. Golden Gate of Kyiv
+5. Chernobyl Exclusion Zone
+6. Odessa Opera and Ballet Theater
+7. Kamianets-Podilskyi Castle
+8. Sofiyivka Park 
+9. Olesko Castle
+10. Tarakaniv Fortifications.
+
+United Arab Emirates (UAE)
+1. Burj Khalifa
+2. Sheikh Zayed Grand Mosque
+3. Dubai Mall
+4. Palm Jumeirah
+5. Dubai Fountain
+6. Dubai Miracle Garden
+7. Ski Dubai
+8. Abu Dhabi Corniche
+9. Ferrari World Abu Dhabi
+10. Dubai Marina
+
+United Kingdom (UK)
+1. Buckingham Palace
+2. Tower of London
+3. Stonehenge
+4. Edinburgh Castle
+5. The British Museum
+6. The London Eye
+7. The Lake District
+8. The Roman Baths
+9. Windsor Castle
+10. The York Minster
+
+United States of America (USA)
+1. Times Square, New York City
+2. Grand Canyon National Park, Arizona
+3. Walt Disney World, Orlando, Florida
+4. Golden Gate Bridge, San Francisco, California
+5. The National Mall and Memorial Parks, Washington DC
+6. Las Vegas Strip, Nevada
+7. Yellowstone National Park, Wyoming, Montana, and Idaho
+8. Statue of Liberty, New York City
+9. Hollywood Walk of Fame, Los Angeles, California
+10. Niagara Falls, New York and Ontario, Canada
+
+Uruguay
+1. Montevideo
+2. Punta del Este
+3. Colonia del Sacramento
+4. Cabo Polonio
+5. Piriápolis
+6. Salto Grande
+7. Fortaleza de Santa Teresa
+8. Río de la Plata
+9. Rambla de Montevideo
+10. Ciudad Vieja
+
+Uzbekistan
+1. Registan Square
+2. Samarkand
+3. Bukhara
+4. Khiva
+5. Shakhrisabz
+6. Amir Timur Museum
+7. Chorsu Bazaar
+8. Kalyan Minaret
+9. Ark Fortress
+10. Charvak Reservoir
+
+Vanuatu
+1. Mount Yasur
+2. Mele Cascades Waterfall
+3. Champagne Beach
+4. Port Vila Market
+5. Hideaway Island Marine Reserve
+6. Million Dollar Point
+7. Blue Lagoon
+8. Ekasup Cultural Village
+9. Nanda Blue Hole
+10. Erakor Island.
+
+Vatican City (Holy See)
+1. St. Peter's Basilica
+2. Sistine Chapel
+3. Vatican Museums
+4. Vatican Gardens
+5. Apostolic Palace
+6. Piazza San Pietro
+7. The Vatican Library
+8. Vatican Necropolis
+9. Pinacoteca Vaticana
+10. Vatican Obelisk
+
+Venezuela
+1. Angel Falls
+2. Isla Margarita
+3. Mount Roraima
+4. Los Roques Archipelago National Park
+5. Mochima National Park
+6. Canaima National Park
+7. Morrocoy National Park
+8. Salto del Ángel Waterfall
+9. Choroni
+10. Pico Bolivar
+
+Vietnam
+1. Halong Bay 
+2. Ho Chi Minh Mausoleum 
+3. Hoi An Ancient Town 
+4. Saigon Notre Dame Cathedral 
+5. Hoan Kiem Lake 
+6. Hue Imperial City 
+7. Mekong Delta 
+8. Cu Chi Tunnels 
+9. Phu Quoc Island 
+10. Nha Trang Beach
+
+Yemen
+1. Old City of Sana'a
+2. Shibam Hadramaut
+3. Al Saleh Mosque
+4. Great Marib Dam
+5. Socotra Island
+6. Al-Mahwit Dam
+7. Thula Fortress
+8. Dar al-Hajar
+9. Aden Port and Harbour
+10. Al-Bakiriyya Ottoman mosque
+
+Zambia
+1. Victoria Falls
+2. South Luangwa National Park
+3. Lower Zambezi National Park
+4. Kafue National Park
+5. Mosi-oa-Tunya National Park
+6. Lusaka National Museum
+7. Kabwata Cultural Village
+8. Chimfunshi Wildlife Orphanage
+9. Kasanka National Park
+10. Lake Kariba Cruise
+
+Zimbabwe1. Victoria Falls
+2. Hwange National Park
+3. Great Zimbabwe Ruins
+4. Matobo National Park
+5. Mana Pools National Park
+6. Lake Kariba
+7. Gonarezhou National Park
+8. Eastern Highlands
+9. Chimanimani National Park
+10. Mutare Museum.
+
