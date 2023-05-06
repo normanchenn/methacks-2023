@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+import MapContainerWrapper from './DynamicMap';
 
 export const CitySummary = () => {
     const [name, setName] = useState("");
     const [info, setInfo] = useState("");
+    const [showMap, setShowMap] = useState(false);
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(`Name: ${name}`);
@@ -12,6 +14,7 @@ export const CitySummary = () => {
                 console.log(data);
                 setInfo(data);
                 sessionStorage.setItem("cityData", JSON.stringify(data));
+                setShowMap(true);
             })
             .catch(error => {
                 console.log(error);
@@ -34,6 +37,9 @@ export const CitySummary = () => {
         {info.local_cuisine && info.local_cuisine.map((dish, index) => (<div key={index}>Dish: {dish}</div>))}
         {info.latitude && <div>Latitude: {info.latitude}</div>}
         {info.longitude && <div>Longitude: {info.longitude}</div>}
+        {showMap && <MapContainerWrapper cityData={info} showMap={showMap} />}
     </div>
   )
 }
+
+

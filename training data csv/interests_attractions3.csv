@@ -1,0 +1,278 @@
+Reading,Museum
+Writing,Museum
+Painting,Museum
+Drawing,Museum
+Sketching,Museum
+Sculpting,Museum
+Knitting,Museum
+Crocheting,Museum
+Sewing,Museum
+Embroidery,Museum
+Quilting,Museum
+Photography,Natural-Site
+Videography,Natural-Site
+Film-making,Entertainment-Venue
+Acting,Entertainment-Venue
+Singing,Entertainment-Venue
+Dancing,Entertainment-Venue
+Playing an instrument,Entertainment-Venue
+Songwriting,Entertainment-Venue
+Music production,Entertainment-Venue
+Graphic design,Urban-Destination
+Web design,Urban-Destination
+Programming,Urban-Destination
+Game development,Urban-Destination
+Playing video games,Entertainment-Venue
+Board games,Entertainment-Venue
+Card games,Entertainment-Venue
+Collecting stamps,Museum
+Collecting coins,Museum
+Collecting antiques,Museum
+Collecting art,Museum
+Collecting books,Museum
+Collecting toys,Museum
+Collecting figurines,Museum
+Collecting sports memorabilia,Sports-Venue
+Collecting rocks and minerals,Natural-Site
+Collecting seashells,Natural-Site
+Collecting plants,Natural-Site
+Gardening,Natural-Site
+Cooking,Cultural-Attraction
+Baking,Cultural-Attraction
+Grilling,Cultural-Attraction
+Barbecuing,Cultural-Attraction
+Brewing beer,Cultural-Attraction
+Making wine,Cultural-Attraction
+Cocktails and mixology,Cultural-Attraction
+Wine tasting,Cultural-Attraction
+Beer tasting,Cultural-Attraction
+Traveling,Theme-Park
+Hiking,Natural-Site
+Camping,Natural-Site
+Fishing,Natural-Site
+Hunting,Natural-Site
+Scuba diving,Natural-Site
+Snorkeling,Natural-Site
+Surfing,Natural-Site
+Windsurfing,Natural-Site
+Kiteboarding,Natural-Site
+Snowboarding,Natural-Site
+Skiing,Natural-Site
+Ice skating,Sports-Venue
+Roller skating,Sports-Venue
+Skateboarding,Sports-Venue
+Parkour,Sports-Venue
+Yoga,Cultural-Attraction
+Pilates,Cultural-Attraction
+Meditation,Cultural-Attraction
+Tai Chi,Cultural-Attraction
+Running,Sports-Venue
+Jogging,Sports-Venue
+Walking,Natural-Site
+Biking,Natural-Site
+Swimming,Sports-Venue
+Weightlifting,Sports-Venue
+Bodybuilding,Sports-Venue
+CrossFit,Sports-Venue
+Boxing,Sports-Venue
+Martial arts,Sports-Venue
+Fencing,Sports-Venue
+Archery,Sports-Venue
+Horseback riding,Natural-Site
+Polo,Sports-Venue
+Motorcycling,Entertainment-Venue
+Car racing,Sports-Venue
+Sailing,Natural-Site
+Canoeing,Natural-Site
+Kayaking,Natural-Site
+Rafting,Natural-Site
+Whitewater kayaking,Natural-Site
+Skydiving,Entertainment-Venue
+Bungee jumping,Entertainment-Venue
+Base jumping,Entertainment-Venue
+Paragliding,Natural-Site
+Hang gliding,Natural-Site
+Hot air ballooning,Natural-Site
+Kite flying,Natural-Site
+Model building,Museum
+DIY projects,Urban-Destination
+Home improvement,Urban-Destination
+Interior design,Urban-Destination
+Astronomy,Natural-Site
+Calligraphy,Cultural-Attraction
+Chess,Entertainment-Venue
+Climbing,Natural-Site
+Coding,Entertainment-Venue
+Crossword puzzles,Entertainment-Venue
+Cryptography,Museum
+Darts,Sports-Venue
+Drawing mandalas,Cultural-Attraction
+Electronics,Entertainment-Venue
+Fishing,Natural-Site
+Foraging,Natural-Site
+Genealogy,Historial-Site
+Geocaching,Natural-Site
+Ghost hunting,Historial-Site
+Graffiti art,Urban-Destination
+Juggling,Entertainment-Venue
+Kayaking,Natural-Site
+Kite surfing,Natural-Site
+Knife making,Museum
+Leatherworking,Museum
+Lego building,Entertainment-Venue
+Lockpicking,Entertainment-Venue
+Magic tricks,Entertainment-Venue
+Mahjong,Entertainment-Venue
+Metalworking,Museum
+Mineral collecting,Museum
+Model rocketry,Museum
+Origami,Museum
+Painting miniatures,Museum
+Papermaking,Museum
+Parachuting,Entertainment-Venue
+Parkour,Urban-Destination
+Perfume making,Museum
+Pipe smoking,Entertainment-Venue
+Playing board games,Entertainment-Venue
+Playing card games,Entertainment-Venue
+Playing chess,Entertainment-Venue
+Playing darts,Sports-Venue
+Playing Go,Entertainment-Venue
+Playing ping pong,Sports-Venue
+Playing pool,Sports-Venue
+Playing squash,Sports-Venue
+Playing tennis,Sports-Venue
+Playing volleyball,Sports-Venue
+Pottery,Museum
+Powerlifting,Sports-Venue
+Quilling,Museum
+RC cars,Entertainment-Venue
+Reading tarot cards,Entertainment-Venue
+Robotics,Museum
+Rock climbing,Natural-Site
+Role-playing games,Entertainment-Venue
+Sand art,Natural-Site
+Scrapbooking,Museum
+Soap making,Museum
+Stand-up comedy,Entertainment-Venue
+Star gazing,Natural-Site
+Stationery collecting,Cultural-Attraction
+Stenciling,Urban-Destination
+Stone carving,Museum
+Sugar sculpting,Museum
+Sudoku,Entertainment-Venue
+Surf fishing,Natural-Site
+Survivalism,Natural-Site
+Table tennis,Sports-Venue
+Taxidermy,Museum
+Tea tasting,Cultural-Attraction
+Thrift store shopping,Urban-Destination
+Toy collecting,Museum
+Trainspotting,Historial-Site
+Travel photography,Natural-Site
+Treasure hunting,Natural-Site
+Video editing,Entertainment-Venue
+Virtual reality gaming,Entertainment-Venue
+Watching movies,Entertainment-Venue
+Watching sports,Sports-Venue
+Weaving,Cultural-Attraction
+Wine making,Natural-Site
+Wood carving,Museum
+Woodworking,Museum
+Writing poetry,Cultural-Attraction
+Writing screenplays,Entertainment-Venue
+Writing short stories,Cultural-Attraction
+Writing song lyrics,Cultural-Attraction
+Zentangle art,Cultural-Attraction
+Ziplining,Natural-Site
+3D printing,Museum
+Acting as a hobby,Entertainment-Venue
+Aeromodelling,Entertainment-Venue
+Airsofting,Sports-Venue
+Astrology,Cultural-Attraction
+Audio production,Entertainment-Venue
+Auto detailing,Urban-Destination
+Backpacking,Natural-Site
+Ballroom dancing,Cultural-Attraction
+Beachcombing,Natural-Site
+Beekeeping,Natural-Site
+Beer brewing,Natural-Site
+Bird photography,Natural-Site
+Blacksmithing,Museum
+Board game design,Entertainment-Venue
+Body painting,Entertainment-Venue
+Bookbinding,Museum
+Butterfly watching,Natural-Site
+Callisthenics,Sports-Venue
+Candle making,Museum
+Car restoration,Urban-Destination
+Beekeeping,Natural-Site
+Candle making,Entertainment Venue
+Soap making,Entertainment Venue
+Woodworking,Cultural-Attraction
+Furniture restoration,Historial-Site
+Metal detecting,Natural-Site
+Cross-stitching,Cultural-Attraction
+Embellishing clothing,Cultural-Attraction
+Leather carving,Cultural-Attraction
+Glassblowing,Cultural-Attraction
+Stained glass making,Cultural-Attraction
+Pottery throwing,Cultural-Attraction
+Mosaics,Cultural-Attraction
+Wood carving,Cultural-Attraction
+Stone carving,Cultural-Attraction
+Engraving,Cultural-Attraction
+Printmaking,Cultural-Attraction
+Bookbinding,Cultural-Attraction
+Calligraphy,Cultural-Attraction
+Scrapbooking,Entertainment Venue
+Collage making,Cultural-Attraction
+Origami folding,Cultural-Attraction
+Paper quilling,Cultural-Attraction
+Flower arranging,Cultural-Attraction
+Knitting socks,Cultural-Attraction
+Knitting hats,Cultural-Attraction
+Knitting scarves,Cultural-Attraction
+Knitting sweaters,Cultural-Attraction
+Knitting blankets,Cultural-Attraction
+Quilting patchwork,Cultural-Attraction
+Sewing clothes,Cultural-Attraction
+Sewing home decor,Cultural-Attraction
+Upholstery,Cultural-Attraction
+Crossword puzzle solving,Entertainment Venue
+Sudoku solving,Entertainment Venue
+Rubik's cube solving,Entertainment Venue
+Puzzle assembling,Entertainment Venue
+Magic the Gathering,Entertainment Venue
+Dungeons and Dragons,Entertainment Venue
+Warhammer 40K,Entertainment Venue
+Board game design,Entertainment Venue
+Costume design,Cultural-Attraction
+Cosplay,Entertainment Venue
+Stand-up comedy,Entertainment Venue
+Improv comedy,Entertainment Venue
+Podcasting,Entertainment Venue
+Vlogging,Entertainment Venue
+Blogging,Entertainment Venue
+Creative writing,Cultural-Attraction
+Poetry writing,Cultural-Attraction
+Screenwriting,Cultural-Attraction
+Public speaking,Cultural-Attraction
+Debate,Cultural-Attraction
+Model building,Entertainment Venue
+RC car racing,Sports-Venue
+Astronomy observation,Natural-Site
+Telescope building,Cultural-Attraction
+Drone flying,Entertainment Venue
+Robot building,Cultural-Attraction
+Hackathon participation,Entertainment Venue
+Virtual reality gaming,Entertainment Venue
+Augmented reality gaming,Entertainment Venue
+Escape room solving,Entertainment Venue
+Baking bread,Entertainment Venue
+Making candy,Entertainment Venue
+Making chocolate,Entertainment Venue
+Fermentation,Entertainment Venue
+Pickling,Entertainment Venue
+Making jam,Entertainment Venue
+Making pasta,Entertainment Venue

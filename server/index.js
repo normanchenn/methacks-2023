@@ -112,7 +112,75 @@ app.get("/api/cohere/hobbies/:interest", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 app.get("/api/cohere/weatherPrediction/:activity", async (req, res) => {
+=======
+//   not good
+  app.get("/api/cohere/hobbies2/:interest", async (req, res) => {
+    try {
+      cohere.init(process.env.COHERE_API_KEY);
+      const {interest} = req.params;
+      const response = await cohere.classify({
+        inputs: [`${interest}`],
+        model: "9206dd3b-2239-4bd8-b805-0a0b07c17a50-ft",
+        max_tokens: 100,
+      });
+      console.log(JSON.stringify(response, null, 3));
+      res.send(JSON.stringify(response, null, 3));
+    } catch (error) {
+      console.error("Error classifying data:", error);
+      res.status(400).json({ error: "An error occurred while classifying data" });
+    }
+  });
+
+  app.get("/api/cohere/hobbies3/:interest", async (req, res) => {
+    try {
+      cohere.init(process.env.COHERE_API_KEY);
+      const {interest} = req.params;
+      const response = await cohere.classify({
+        inputs: [`${interest}`],
+        model: "de9da453-d1be-4e48-a53e-2e3f6c479361-ft",
+        max_tokens: 100,
+      });
+      console.log(JSON.stringify(response, null, 3));
+      res.send(JSON.stringify(response, null, 3));
+    } catch (error) {
+      console.error("Error classifying data:", error);
+      res.status(400).json({ error: "An error occurred while classifying data" });
+    }
+  });
+
+//   app.post('/api/cohere/suggestions', async (req, res) => {
+//     const options = {
+//       method: 'POST',
+//       url: 'https://api.cohere.ai/v1/rerank',
+//       headers: {
+//         accept: 'application/json',
+//         'content-type': 'application/json',
+//         authorization: `Bearer ${process.env.COHERE_API_KEY}`
+//       },
+//       data: {
+//         return_documents: false,
+//         model: 'rerank-english-v2.0',
+//         // query: req.body.query,
+//         query: "hiking",
+//         // documents: req.body.documents
+//         documents: ["park", "outdoor", "hiking trail", "beach", "campground", "fishing spot", "waterfall", "botanical garden", "scenic drive", "zoological park", "national park", "museum", "gallery", "street art", "sculpture garden", "public art", "art fair", "art studio", "art auction", "art festival", "art installation", "historical landmark", "memorial", "historical society", "archaeological site", "fortification", "historic house", "historic district", "historic ship", "historical monument", "concert venue", "music festival", "opera house", "jazz club", "record store", "music museum", "rock club", "blues club", "symphony orchestra", "live music venue", "restaurant", "food tour", "winery", "brewery", "food market", "food truck", "cooking class", "chocolate factory", "coffee shop", "tea room", "aquarium", "planetarium", "science museum", "observatory", "science center", "nature center", "aviation museum", "technology museum", "mall", "marketplace", "boutique", "flea market", "antique shop", "department store", "outlet store", "thrift store", "artisan market", "craft fair", "stadium"]
+//       }
+//     };
+  
+//     try {
+//       const response = await axios(options);
+//       res.json(response.data);
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).send('An error occurred');
+//     }
+//   });
+
+
+app.get("/api/cohere/weatherPrediction", async (req, res) => {
+>>>>>>> 4ee5e4e3fc0aec406a2006b751abf609ed83fcf3
   try {
     cohere.init(process.env.COHERE_API_KEY);
     const { activity } = req.params;

@@ -1,19 +1,22 @@
 import { CitySummary } from "./components/CitySummary";
-import DynamicMap from "./components/DynamicMap";
 import { UserPreferences } from "./components/UserPreferences";
 import { GenerateRec } from "./components/GenerateRec";
+import MapContainerWrapper from "./components/DynamicMap"; // <-- Change here
+import { Other } from "./components/Other";
+import './index.css';
 
 function App() {
   return (
       <div>
         frontend
         <CitySummary />
+        <MapContainerWrapper />
         <UserPreferences />
         <GenerateRec />
-        <DynamicMap />
       </div>
       
   )
 }
 
 export default App
+

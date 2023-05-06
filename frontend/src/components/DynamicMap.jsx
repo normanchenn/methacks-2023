@@ -4,43 +4,44 @@ import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 const mapStyles = {
+  position: 'fixed',
+  top: '10%',
+  left: '25%',
   width: '50%',
-  height: '50%'
+  height: '50%',
+  zIndex: '1'
 };
 
 const MapContainer = (props) => {
-  const { google } = props;
+  const { google, cityData } = props;
+  const [showMap, setShowMap] = useState(false);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
   useEffect(() => {
-    const storedCityData = sessionStorage.getItem('cityData');
-    if (storedCityData) {
-      const { latitude, longitude } = JSON.parse(storedCityData);
+    if (cityData) {
+      const { latitude, longitude } = cityData;
       setLatitude(parseFloat(latitude) || 0);
       setLongitude(parseFloat(longitude) || 0);
+      setShowMap(true);
     }
-  }, []);
-
-  useEffect(() => {
-    console.log(latitude);
-  }, [latitude]);
-
-  useEffect(() => {
-    console.log(longitude);
-  }, [longitude]);
+  }, [cityData]);
 
   return (
-    <Map
-      google={google}
-      zoom={8}  
-      style={mapStyles}
-      center={{ lat: latitude || 0, lng: longitude || 0 }}
-    >
-      <Marker
-        position={{ lat: latitude || 0, lng: longitude || 0 }}
-      />
-    </Map>
+    <>
+      {showMap && (
+        <Map
+          google={google}
+          zoom={8}  
+          style={mapStyles}
+          center={{ lat: latitude || 0, lng: longitude || 0 }}
+        >
+          <Marker
+            position={{ lat: latitude || 0, lng: longitude || 0 }}
+          />
+        </Map>
+      )}
+    </>
   );
 };
 
@@ -49,6 +50,9 @@ const MapContainerWrapper = GoogleApiWrapper({
 })(MapContainer);
 
 export default MapContainerWrapper;
+
+
+
 
 
 
