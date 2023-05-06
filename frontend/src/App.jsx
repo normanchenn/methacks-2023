@@ -10,7 +10,6 @@ function App() {
         <CitySummary />
         <UserPreferences />
         <GenerateRec />
-        <CityTimezone  />
         <DynamicMap />
       </div>
       
