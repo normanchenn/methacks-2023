@@ -1,5 +1,8 @@
+// Must install: 
 // npm install @googlemaps/google-maps-services-js]
-// hi
+
+// I will implement other google map APIs tmr - BUT WE CAN USE LONGITUDE AND LATITUDE
+
 
 const { Client } = require('@googlemaps/google-maps-services-js');
 
