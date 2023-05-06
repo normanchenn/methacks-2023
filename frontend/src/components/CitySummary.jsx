@@ -31,6 +31,8 @@ export const CitySummary = () => {
         {info.language && <div>Language: {info.language}</div>}
         {info.popular_attractions && info.popular_attractions.map(attraction => (<p>{attraction}</p>))}
         {info.local_cuisine && info.local_cuisine.map(dish => (<div>Dish: {dish}</div>))}
+        {info.latitude && <div>Latitude: {info.latitude}</div>}
+        {info.longitude && <div>Longitude: {info.longitude}</div>}
     </div>
   )
 }

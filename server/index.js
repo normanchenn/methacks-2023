@@ -30,7 +30,7 @@ const citySchema = new mongoose.Schema({
   local_cuisine: [{ type: String }],
 });
 
-const City = mongoose.model("City", citySchema);
+const City = mongoose.model("City2", citySchema);
 
 const newCity = new City({
   name: "Paris",
