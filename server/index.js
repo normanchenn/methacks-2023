@@ -63,7 +63,7 @@ const newCity = new City({
 //         console.error(`Error saving ${newCity.name} to the database: ${error}`);
 //     });
 
-app.get("/api/mongodb/findCity/:name", async (req, res) => {
+app.get("/api/cities/:name", async (req, res) => {
   const { name } = req.params;
   try {
     const city = await City.findOne({ name });
