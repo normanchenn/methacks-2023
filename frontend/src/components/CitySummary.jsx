@@ -28,6 +28,9 @@ export const CitySummary = () => {
         {info.country && <div>Country: {info.country}</div>}
         {info.currency && <div>Currency: {info.currency}</div>}
         {info.population && <div>Population: {info.population}</div>}
+        {info.language && <div>Language: {info.language}</div>}
+        {info.popular_attractions && info.popular_attractions.map(attraction => (<p>{attraction}</p>))}
+        {info.local_cuisine && info.local_cuisine.map(dish => (<div>Dish: {dish}</div>))}
     </div>
   )
 }

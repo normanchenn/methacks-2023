@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const app = express();
-const openAI = require("openai");
+// const openAI = require("openai");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -77,7 +77,8 @@ const cohere = require('cohere-ai');
 cohere.init('8GEb0w8gJW7TnKs6FLR45yWG0KSLIJNpeuIikuVF');
 app.get('/api/cohere', async (req, res) => {
     const response = await cohere.generate({
-        prompt: 'paris is a good place because',
+        prompt: 'Give me a summary of paris',
+        model: 'ca5f4bac-9c09-4770-bf7a-d043739e82a7-ft',
         max_tokens: 100,
     });
     console.log(response);
