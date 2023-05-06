@@ -1,7 +1,7 @@
-require("dotenv").config();
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const mongoose = require("mongoose");
 const app = express();
 // const openAI = require("openai");
@@ -10,63 +10,75 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-/* cohere requirements */
-console.log(process.env.COHERE_API_KEY);
-const cohere = require("cohere-ai");
+mongoose.connect(
+    process.env.MONGODB_URI, 
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+);
 
-// mongoose.connect(process.env.MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+const citySchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    country: { type: String, required: true },
+    region: { type: String },
+    population: { type: Number },
+    timezone: { type: String, required: true },
+    currency: { type: String, required: true },
+    language: { type: String },
+    popular_attractions: [{ type: String }],
+    emergency_service_number: { type: Number, required: true },
+    local_customs: [{ type: String }],
+    local_cuisine: [{ type: String }]
+});
 
-// const citySchema = new mongoose.Schema({
-//   name: { type: String, required: true },
-//   country: { type: String, required: true },
-//   region: { type: String },
-//   population: { type: Number },
-//   timezone: { type: String, required: true },
-//   currency: { type: String, required: true },
-//   language: { type: String },
-//   popular_attractions: [{ type: String }],
-//   emergency_service_number: { type: Number, required: true },
-//   local_customs: [{ type: String }],
-//   local_cuisine: [{ type: String }],
-// });
+const City = mongoose.model('City', citySchema);
 
-// const City = mongoose.model("City", citySchema);
+const newCity = new City({
+    name: 'Paris',
+    country: 'France',
+    region: 'Île-de-France',
+    population: 2.14e6,
+    timezone: 'CET',
+    currency: 'Euro',
+    language: 'French',
+    population_attractions: ['Eiffel Tower', 'Louvre Museum', 'Notre-Dame Cathedral'],
+    emergency_service_number: 112,
+    local_customs: ['Kissing on the cheek', 'No tipping in restaurants'],
+    local_cuisine: ['Croissants', 'Escargots', 'Macarons'],
+});
+// newCity.save()
+//     .then(city => {
+//         console.log(`saved ${city.name} to the database`);
+//     })
+//     .catch(error => {
+//         console.error(`Error saving ${newCity.name} to the database: ${error}`);
+//     });
 
-// const newCity = new City({
-//   name: "Paris",
-//   country: "France",
-//   region: "Île-de-France",
-//   population: 2.14e6,
-//   timezone: "CET",
-//   currency: "Euro",
-//   language: "French",
-//   population_attractions: [
-//     "Eiffel Tower",
-//     "Louvre Museum",
-//     "Notre-Dame Cathedral",
-//   ],
-//   emergency_service_number: 112,
-//   local_customs: ["Kissing on the cheek", "No tipping in restaurants"],
-//   local_cuisine: ["Croissants", "Escargots", "Macarons"],
-// });
-// newCity
-//   .save()
-//   .then((city) => {
-//     console.log(`saved ${city.name} to the database`);
-//   })
-//   .catch((error) => {
-//     console.error(`Error saving ${newCity.name} to the database: ${error}`);
-//   });
+app.get('/api/cities/:name', async (req, res) => {
+    const { name } = req.params;
+  
+    try {
+      const city = await City.findOne({ name });
+  
+      if (!city) {
+        return res.status(404).json({ message: 'City not found' });
+        // return res.status(404).json();
+      }
+  
+      return res.json(city);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 app.get("/", (req, res) => {
   res.send("hey world, from methacks");
 });
 
 /* weather dependent model training */
-const examples = [
+const weatherLabel = [
   { text: "national park", label: "yes" },
   { text: "museum", label: "no" },
   { text: "church", label: "no" },
@@ -126,7 +138,7 @@ const examples = [
   { text: "amusement parks", label: "yes" },
 ];
 
-const inputs = [
+const weatherTest = [
   "Chitwan National Park",
   "Van Gogh Museum",
   "St. Peter's Basilica",
@@ -155,26 +167,112 @@ const inputs = [
   "having a picnic in the park",
 ];
 
-const newCity = new City({
-    name: 'Paris',
-    country: 'France',
-    region: 'Île-de-France',
-    population: 2.14e6,
-    timezone: 'CET',
-    currency: 'Euro',
-    language: 'French',
-    population_attractions: ['Eiffel Tower', 'Louvre Museum', 'Notre-Dame Cathedral'],
-    emergency_service_number: 112,
-    local_customs: ['Kissing on the cheek', 'No tipping in restaurants'],
-    local_cuisine: ['Croissants', 'Escargots', 'Macarons'],
-});
-newCity.save()
-    .then(city => {
-        console.log(`saved ${city.name} to the database`);
-    })
-    .catch(error => {
-        console.error(`Error saving ${newCity.name} to the database: ${error}`);
+app.get("/weatherTraining", async (req, res) => {
+  try {
+    cohere.init(process.env.COHERE_API_KEY);
+    const response = await cohere.classify({
+      model: "small",
+      inputs: weatherTest,
+      examples: weatherLabel,
     });
+    console.log(JSON.stringify(response, null, 3));
+    res.send(JSON.stringify(response, null, 3));
+  } catch (error) {
+    console.error("Error classifying data:", error);
+    res.status(400).json({ error: "An error occurred while classifying data" });
+  }
+});
+
+/* best season of visit training */
+const seasonLabel = [
+  { text: "beach", label: "summer" },
+  { text: "ski resort", label: "winter" },
+  { text: "hiking trail", label: "spring" },
+  { text: "waterfall", label: "spring" },
+  { text: "cruise", label: "summer" },
+  { text: "camping", label: "summer" },
+  { text: "surfing", label: "summer" },
+  { text: "kayaking", label: "summer" },
+  { text: "parasailing", label: "summer" },
+  { text: "snowboarding", label: "winter" },
+  { text: "sailing", label: "summer" },
+  { text: "rafting", label: "summer" },
+  { text: "fishing", label: "summer" },
+  { text: "snorkeling", label: "summer" },
+  { text: "swimming", label: "summer" },
+  { text: "picnic", label: "spring" },
+  { text: "beach", label: "summer" },
+  { text: "ski resort", label: "winter" },
+  { text: "hiking trail", label: "spring" },
+  { text: "waterfall", label: "spring" },
+  { text: "cruise", label: "summer" },
+  { text: "camping", label: "summer" },
+  { text: "surfing", label: "summer" },
+  { text: "kayaking", label: "summer" },
+  { text: "parasailing", label: "summer" },
+  { text: "snowboarding", label: "winter" },
+  { text: "sailing", label: "summer" },
+  { text: "rafting", label: "summer" },
+  { text: "fishing", label: "summer" },
+  { text: "snorkeling", label: "summer" },
+  { text: "swimming", label: "summer" },
+  { text: "picnic", label: "spring" },
+  { text: "botanical garden", label: "spring" },
+  { text: "wine tasting", label: "fall" },
+  { text: "hot air ballooning", label: "fall" },
+  { text: "cherry blossom viewing", label: "spring" },
+  { text: "apple picking", label: "fall" },
+  { text: "pumpkin patch visit", label: "fall" },
+  { text: "ice skating", label: "winter" },
+  { text: "horseback riding", label: "spring" },
+  { text: "biking tour", label: "summer" },
+  { text: "wildlife safari", label: "fall" },
+  { text: "kite festival", label: "spring" },
+  { text: "ski jumping", label: "winter" },
+  { text: "harvest festival", label: "fall" },
+  { text: "orchard visit", label: "fall" },
+];
+
+const seasonTest = [
+    "beach",
+    "ski resort",
+    "hiking trail",
+    "waterfall",
+    "wine tasting",
+    "camping",
+    "surfing",
+    "kayaking",
+    "picnic",
+    "orchard visit",
+];
+
+app.get("/seasonTraining", async (req, res) => {
+  try {
+    cohere.init(process.env.COHERE_API_KEY);
+    const response = await cohere.classify({
+      model: "small",
+      inputs: seasonTest,
+      examples: seasonLabel,
+    });
+    console.log(JSON.stringify(response, null, 3));
+    res.send(JSON.stringify(response, null, 3));
+  } catch (error) {
+    console.error("Error classifying data:", error);
+    res.status(400).json({ error: "An error occurred while classifying data" });
+  }
+});
+
+const cohere = require('cohere-ai');
+cohere.init('8GEb0w8gJW7TnKs6FLR45yWG0KSLIJNpeuIikuVF');
+app.get('/api/cohere', async (req, res) => {
+    const response = await cohere.generate({
+        prompt: 'Give me a summary of paris',
+        model: 'ca5f4bac-9c09-4770-bf7a-d043739e82a7-ft',
+        max_tokens: 100,
+    });
+    console.log(response);
+    res.send(response);
+})
 
 app.get('/', (req, res) => {
     res.send('Hello world, from methacks');
@@ -182,5 +280,5 @@ app.get('/', (req, res) => {
 
 const PORT = 3210;
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+    console.log(`Listening on port ${PORT}`);
 });
