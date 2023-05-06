@@ -264,9 +264,10 @@ app.get("/seasonTraining", async (req, res) => {
 
 const cohere = require('cohere-ai');
 cohere.init('8GEb0w8gJW7TnKs6FLR45yWG0KSLIJNpeuIikuVF');
-app.get('/api/cohere', async (req, res) => {
+app.get('/api/cohere/:city', async (req, res) => {
+    const { city } = req.params;
     const response = await cohere.generate({
-        prompt: 'Give me a summary of paris',
+        prompt: `Give me a summary of ${city}`,
         model: 'ca5f4bac-9c09-4770-bf7a-d043739e82a7-ft',
         max_tokens: 100,
     });
