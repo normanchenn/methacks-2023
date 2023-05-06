@@ -132,7 +132,9 @@ app.get("/api/cohere/weatherPrediction", async (req, res) => {
   }
 });
 
-app.get("/api/amadeus/flightPlanner/:origin/:destination/:date", async (req, res) => {
+app.get(
+  "/api/amadeus/flightPlanner/:origin/:destination/:date",
+  async (req, res) => {
     const { origin } = req.params;
     const { destination } = req.params;
     const { date } = req.params;
@@ -209,6 +211,20 @@ app.get("/api/amadeus/flightPlanner/:origin/:destination/:date", async (req, res
     }
   }
 );
+
+app.get("/api/googlemaps/currentLocation", async (req, res) => {
+  const apiKey = process.env.GOOGLE_MAP_API_KEY;
+  axios
+    .post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`)
+    .then((response) => {
+      const {lat, lng} = response.data.location;
+      res.json({ latitude: lat, longitude: lng });
+    })
+    .catch((error) => {
+      console.error("Error getting user location:", error);
+      res.status(500).send("Error getting user location");
+    });
+});
 
 app.get("/", (req, res) => {
   res.send("Hello world, from methacks");
