@@ -30,31 +30,31 @@ const citySchema = new mongoose.Schema({
   emergency_service_number: { type: Number, required: true },
   local_customs: [{ type: String }],
   local_cuisine: [{ type: String }],
-  latitude: { type:Number, required: true},
-  longitude: { type:Number, required: true},
+  latitude: { type: Number, required: true },
+  longitude: { type: Number, required: true },
 });
 
 const City = mongoose.model("City2", citySchema);
 
 const newCity = new City({
-    name: "Sydney",
-    country: "Australia",
-    region: "New South Wales",
-    population: 5.31e6,
-    timezone: "AEST",
-    currency: "Australian dollar",
-    language: "English",
-    population_attractions: [
-      "Sydney Opera House",
-      "Bondi Beach",
-      "Harbour Bridge",
-    ],
-    emergency_service_number: 000,
-    local_customs: ["BBQs on the beach", "Surfing in the ocean"],
-    local_cuisine: ["Meat pies", "Fish and chips", "Vegemite"],
-    latitude: -33.8688,
-    longitude: 151.2093
-  });  
+  name: "Sydney",
+  country: "Australia",
+  region: "New South Wales",
+  population: 5.31e6,
+  timezone: "AEST",
+  currency: "Australian dollar",
+  language: "English",
+  population_attractions: [
+    "Sydney Opera House",
+    "Bondi Beach",
+    "Harbour Bridge",
+  ],
+  emergency_service_number: 000,
+  local_customs: ["BBQs on the beach", "Surfing in the ocean"],
+  local_cuisine: ["Meat pies", "Fish and chips", "Vegemite"],
+  latitude: -33.8688,
+  longitude: 151.2093,
+});
 // newCity.save()
 //     .then(city => {
 //         console.log(`saved ${city.name} to the database`);
@@ -99,21 +99,21 @@ app.get("/api/cohere/citySummary/:city", async (req, res) => {
 });
 
 app.get("/api/cohere/hobbies/:interest", async (req, res) => {
-    try {
-      cohere.init(process.env.COHERE_API_KEY);
-      const {interest} = req.params;
-      const response = await cohere.generate({
-        prompt: `${interest}`,
-        model: "957224c1-311c-460f-ac83-71afb5ad6dc2-ft",
-        max_tokens: 100,
-      });
-      console.log(JSON.stringify(response, null, 3));
-      res.send(JSON.stringify(response, null, 3));
-    } catch (error) {
-      console.error("Error classifying data:", error);
-      res.status(400).json({ error: "An error occurred while classifying data" });
-    }
-  });
+  try {
+    cohere.init(process.env.COHERE_API_KEY);
+    const { interest } = req.params;
+    const response = await cohere.generate({
+      prompt: `${interest}`,
+      model: "957224c1-311c-460f-ac83-71afb5ad6dc2-ft",
+      max_tokens: 100,
+    });
+    console.log(JSON.stringify(response, null, 3));
+    res.send(JSON.stringify(response, null, 3));
+  } catch (error) {
+    console.error("Error classifying data:", error);
+    res.status(400).json({ error: "An error occurred while classifying data" });
+  }
+});
 
 app.get("/api/cohere/weatherPrediction", async (req, res) => {
   try {
@@ -132,15 +132,12 @@ app.get("/api/cohere/weatherPrediction", async (req, res) => {
   }
 });
 
-app.get(
-  "/api/amadeus/flightPlanner/:origin/:destination/:date",
-  async (req, res) => {
+app.get("/api/amadeus/flightPlanner/:origin/:destination/:date", async (req, res) => {
     const { origin } = req.params;
     const { destination } = req.params;
     const { date } = req.params;
     const clientId = process.env.AMADEUS_API_KEY;
     const clientSecret = process.env.AMADEUS_API_SECRET;
-
     async function getAccessToken(apiKey, apiSecret) {
       const baseUrl = "https://test.api.amadeus.com/v1";
       const tokenEndpoint = "/security/oauth2/token";
@@ -162,7 +159,6 @@ app.get(
         throw new Error("Failed to retrieve access token");
       }
     }
-
     async function searchFlightOffers() {
       const baseUrl = "https://test.api.amadeus.com/v2";
 
@@ -190,11 +186,7 @@ app.get(
             (a, b) =>
               parseFloat(a.price.grandTotal) - parseFloat(b.price.grandTotal)
           );
-
-        // Get the three cheapest flights
         const cheapestFlights = filteredFlights.slice(0, 3);
-
-        // Print information about the cheapest flights
         cheapestFlights.forEach((flight, index) => {
           console.log(`Flight ${index + 1}:`);
           for (const key in flight) {
@@ -209,7 +201,6 @@ app.get(
         res.status(500).json({ error: "Failed to retrieve flight offers" });
       }
     }
-
     try {
       await searchFlightOffers();
     } catch (error) {
