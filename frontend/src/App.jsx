@@ -12,9 +12,7 @@ function App() {
         <CitySummary />
         <UserPreferences />
         <GenerateRec />
-        <Other />
-        {/* <CityTimezone  /> */}
-        {/* <DynamicMap /> */}
+        <DynamicMap />
       </div>
       
   )
