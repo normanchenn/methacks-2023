@@ -7,7 +7,7 @@ import dollar from "./dollar.svg";
 export const Results = () => {
   const cityData = JSON.parse(sessionStorage.getItem("cityData"));
   const [flightOptions, setFlightOptions] = useState([]);
-  const [itinerary, setItinerary] = useState([]);
+  const [itinerary, setItinerary] = useState("");
 
   useEffect(() => {
     const fetchItinerary = async () => {
@@ -16,6 +16,8 @@ export const Results = () => {
             try {
               const response = await fetch(`http://localhost:4321/api/itinerary/${cityData.country}`);
               const data = await response.json();
+              console.log("data: " + data);
+            //   const arr = data.split(/\d+\./);
               setItinerary(data);
             } catch (error) {
               console.error(error);
@@ -90,10 +92,11 @@ export const Results = () => {
                 </div>
             </div>
         </div>
-        <div className="flex-grow rounded-3xl m-12 bg-stone-300 justify-center text-center">
-            {itinerary.map((item) => {
+        <div className="flex rounded-3xl m-12 bg-stone-300 justify-center text-center">
+            {/* {itinerary.map((item) => {
                 <div>{item}</div>
-            })}
+            })} */}
+            {itinerary}
         </div>
     </div>
   )
