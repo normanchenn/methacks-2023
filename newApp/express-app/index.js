@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.get("/api/suitableAttractions/:countryName", async (req, res) => {
+app.get("/api/itinerary/:countryName", async (req, res) => {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
@@ -55,9 +55,16 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
         weatherDependentAttractions
       );
 
-      processAttractions(attractions);
+      const finalAttractions = await processAttractions(attractions);
+      const attractionCoordinates = await getAttractionCoordinates(
+        finalAttractions
+      );
+      console.log(attractionCoordinates);
 
-
+      const optimalOrderVisit = await getOptimalOrderOfVisit(
+        attractionCoordinates
+      );
+      console.log(optimalOrderVisit);
 
       const nearestAirport = await getNearestAirport();
       console.log(nearestAirport);
@@ -83,7 +90,6 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
           );
           console.log(curFlights);
           availableFlights = availableFlights.concat(curFlights);
-        
         } catch (error) {
           console.error(
             `Failed to retrieve flights for ${curAirportCode}: ${error}`
@@ -99,19 +105,140 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
             "2023-05-08"
           );
           console.log(curFlights);
-          availableFlights = availableFlights.concat(curFlights);
-        
+          availableFlightsLeastLayover =
+            availableFlightsLeastLayover.concat(curFlights);
         } catch (error) {
           console.error(
             `Failed to retrieve flights for ${curAirportCode}: ${error}`
           );
         }
       }
-      // console.log(availableFlights);
+
+      function filterCheapestFlights(flights) {
+        const sortedFlights = flights.sort((a, b) => {
+          const priceA = parseFloat(a.price.total);
+          const priceB = parseFloat(b.price.total);
+          return priceA - priceB;
+        });
+        const cheapestFlights = sortedFlights.slice(0, 3);
+
+        return cheapestFlights;
+      }
+
+      function filterFewestLayovers(flights) {
+        const sortedFlights = flights.sort((a, b) => {
+          const layoversA = a.itineraries[0].segments.length - 1; // Assuming itineraries always have at least one segment
+          const layoversB = b.itineraries[0].segments.length - 1;
+          return layoversA - layoversB;
+        });
+        const flightWithFewestLayovers = sortedFlights.slice(0, 3);
+        return flightWithFewestLayovers;
+      }
+
+      const cheapestFlights = filterCheapestFlights(availableFlights);
+      const leastLayoverFlights = filterFewestLayovers(
+        availableFlightsLeastLayover
+      );
+      console.log(cheapestFlights);
+      console.log(leastLayoverFlights);
+
       // res.send(availableFlights);
 
       // res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
+      res.send(optimalOrderVisit);
     });
+  });
+});
+
+app.get("/api/flights/:countryName", async (req, res) => {
+  const { countryName } = req.params;
+
+  const airportPath = "./airports.txt";
+  readFileToString(airportPath, async (error, airportContent) => {
+    if (error) {
+      console.error("Error reading file:", error);
+      return;
+    }
+
+    const airports = await getInternationalAirportsByCountry(
+      airportContent,
+      countryName
+    );
+    console.log(airports);
+    const nearestAirport = await getNearestAirport();
+    console.log(nearestAirport);
+
+    const airportArray = allAirports(airportContent);
+
+    const match = findClosestMatch(nearestAirport, airportArray);
+    console.log("the closest match is: " + match);
+
+    const departureCode = findAirportCode(match, airportContent);
+    console.log(departureCode);
+
+    var availableFlights = [];
+    var availableFlightsLeastLayover = [];
+    for (let i = 0; i < airports.length; i++) {
+      const curAirportCode = airports[i];
+      try {
+        const curFlights = await flightPlanner(
+          departureCode,
+          curAirportCode,
+          "2023-05-08"
+        );
+        console.log(curFlights);
+        availableFlights = availableFlights.concat(curFlights);
+      } catch (error) {
+        console.error(
+          `Failed to retrieve flights for ${curAirportCode}: ${error}`
+        );
+      }
+    }
+    for (let i = 0; i < airports.length; i++) {
+      const curAirportCode = airports[i];
+      try {
+        const curFlights = await flightPlannerLeastLayover(
+          departureCode,
+          curAirportCode,
+          "2023-05-08"
+        );
+        console.log(curFlights);
+        availableFlightsLeastLayover =
+          availableFlightsLeastLayover.concat(curFlights);
+      } catch (error) {
+        console.error(
+          `Failed to retrieve flights for ${curAirportCode}: ${error}`
+        );
+      }
+    }
+
+    function filterCheapestFlights(flights) {
+      const sortedFlights = flights.sort((a, b) => {
+        const priceA = parseFloat(a.price.total);
+        const priceB = parseFloat(b.price.total);
+        return priceA - priceB;
+      });
+      const cheapestFlights = sortedFlights.slice(0, 3);
+
+      return cheapestFlights;
+    }
+
+    function filterFewestLayovers(flights) {
+      const sortedFlights = flights.sort((a, b) => {
+        const layoversA = a.itineraries[0].segments.length - 1; // Assuming itineraries always have at least one segment
+        const layoversB = b.itineraries[0].segments.length - 1;
+        return layoversA - layoversB;
+      });
+      const flightWithFewestLayovers = sortedFlights.slice(0, 3);
+      return flightWithFewestLayovers;
+    }
+
+    const cheapestFlights = filterCheapestFlights(availableFlights);
+    const leastLayoverFlights = filterFewestLayovers(
+      availableFlightsLeastLayover
+    );
+    console.log(cheapestFlights);
+    console.log(leastLayoverFlights);
   });
 });
 
@@ -389,6 +516,7 @@ async function suitableAttractions(attractions) {
 async function processAttractions(attractions) {
   const weatherDependentAttractions = await suitableAttractions(attractions);
   console.log("Weather dependent attractions:", weatherDependentAttractions);
+  return weatherDependentAttractions;
 }
 
 async function getInternationalAirportsByCountry(data, countryName) {
@@ -642,7 +770,11 @@ async function flightPlannerLeastLayover(origin, destination, date) {
         const jsonData = response.data;
         const filteredFlights = jsonData.data
           .filter((flight) => flight.price && flight.price.grandTotal)
-          .sort((a, b) => a.itineraries[0].segments.length - b.itineraries[0].segments.length);
+          .sort(
+            (a, b) =>
+              a.itineraries[0].segments.length -
+              b.itineraries[0].segments.length
+          );
         const shortestLayoversFlights = filteredFlights.slice(0, 3);
         return shortestLayoversFlights;
       } catch (error) {
@@ -657,4 +789,83 @@ async function flightPlannerLeastLayover(origin, destination, date) {
     console.error(error);
     throw new Error("An unexpected error occurred");
   }
+}
+
+async function getAttractionCoordinates(attractionNames) {
+  const apiKey = process.env.GOOGLE_MAP_API_KEY;
+  const baseUrl = "https://maps.googleapis.com/maps/api/geocode/json";
+
+  const attractionCoordinates = [];
+
+  for (const attractionName of attractionNames) {
+    try {
+      const response = await axios.get(baseUrl, {
+        params: {
+          address: attractionName,
+          key: apiKey,
+        },
+      });
+
+      const results = response.data.results;
+      if (results.length > 0) {
+        const location = results[0].geometry.location;
+        const latitude = location.lat;
+        const longitude = location.lng;
+
+        attractionCoordinates.push({
+          attraction: attractionName,
+          latitude,
+          longitude,
+        });
+      } else {
+        console.log(`Could not find coordinates for '${attractionName}'.`);
+      }
+    } catch (error) {
+      console.error(
+        `Error occurred while fetching coordinates for '${attractionName}': ${error}`
+      );
+    }
+  }
+  return attractionCoordinates;
+}
+
+function euclideanDistance(coordA, coordB) {
+  const dx = coordA.longitude - coordB.longitude;
+  const dy = coordA.latitude - coordB.latitude;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+async function getOptimalOrderOfVisit(attractionCoordinates) {
+  const numAttractions = attractionCoordinates.length;
+  const visited = Array(numAttractions).fill(false);
+
+  const startIndex = 0;
+  visited[startIndex] = true;
+
+  const optimalOrder = [startIndex];
+  while (optimalOrder.length < numAttractions) {
+    let nearestNeighborIndex = -1;
+    let nearestNeighborDistance = Infinity;
+
+    const currentCoord =
+      attractionCoordinates[optimalOrder[optimalOrder.length - 1]];
+    for (let i = 0; i < numAttractions; i++) {
+      if (!visited[i]) {
+        const distance = euclideanDistance(
+          currentCoord,
+          attractionCoordinates[i]
+        );
+        if (distance < nearestNeighborDistance) {
+          nearestNeighborDistance = distance;
+          nearestNeighborIndex = i;
+        }
+      }
+    }
+    visited[nearestNeighborIndex] = true;
+    optimalOrder.push(nearestNeighborIndex);
+  }
+  const orderedAttractions = optimalOrder.map(
+    (index, order) => `${order + 1}. ${attractionCoordinates[index].attraction}`
+  );
+  return orderedAttractions;
 }
