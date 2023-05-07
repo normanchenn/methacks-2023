@@ -1,5 +1,3 @@
-// npm install --save google-maps-react
-
 import React, { useState, useEffect } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
@@ -50,15 +48,3 @@ const MapContainerWrapper = GoogleApiWrapper({
 })(MapContainer);
 
 export default MapContainerWrapper;
-
-
-
-
-
-
-
-
-
-
-
-
