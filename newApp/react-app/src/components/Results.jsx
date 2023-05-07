@@ -7,7 +7,9 @@ import dollar from "./dollar.svg";
 export const Results = () => {
   const cityData = JSON.parse(sessionStorage.getItem("cityData"));
   const [flightOptions, setFlightOptions] = useState([]);
-  const [itinerary, setItinerary] = useState("");
+  const [itinerary, setItinerary] = useState([]);
+  const [itCalled, setItCalled] = useState(false);
+  const [flCalled, setFlCalled] = useState(false);
 
   useEffect(() => {
     const fetchItinerary = async () => {
@@ -24,7 +26,10 @@ export const Results = () => {
             }
         }
     };
-    fetchItinerary();
+    if (!itCalled){
+        fetchItinerary();
+        setItCalled(true);
+    }
   }, [cityData]);
 
   useEffect(() => {
@@ -37,7 +42,10 @@ export const Results = () => {
         console.error(error);
       }
     };
-    fetchFlights();
+    if (!flCalled){
+        fetchFlights();
+        setFlCalled(true);
+    }
   }, [cityData]);
   return (
     // <div className="flex flex-row h-screen bg-gradient-to-r from-cyan-800 to-orange-100 text-white">
@@ -92,10 +100,7 @@ export const Results = () => {
                 </div>
             </div>
         </div>
-        <div className="flex rounded-3xl m-12 bg-stone-300 justify-center text-center">
-            {/* {itinerary.map((item) => {
-                <div>{item}</div>
-            })} */}
+        <div className="flex basis-1/2 rounded-3xl m-12 bg-stone-300 justify-center text-center">
             {itinerary}
         </div>
     </div>
