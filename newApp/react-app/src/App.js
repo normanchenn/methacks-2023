@@ -14,11 +14,11 @@ import { About } from './components/About';
 function App() {
   return (
     <Router>
-      <nav>
-        <ul>
+      <nav className="border-b border-gray-300">
+        <ul className="flex p-8">
           <li><Link to="/">Logo!</Link></li>
-          <li><Link to="/something">something</Link></li>
-          <li><Link to="/about">About Us</Link></li>
+          {/* <li className="ml-auto"><Link to="/something">something</Link></li> */}
+          <li className="ml-auto"><Link to="/about">About Us</Link></li>
         </ul>
       </nav>
       {/* <div className="text-red-500">

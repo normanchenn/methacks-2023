@@ -18,6 +18,26 @@ mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+
+  const airportSchema = new mongoose.Schema({
+    name: { type: String, required: true},
+    code:  {type: String, required: true},
+  })
+  const Airport = mongoose.model("Airports", airportSchema);
+  app.get("api/airports/:name", async (req, res) => {
+    const {name} = req.params;
+    try{
+        const code = await Airport.findOne({name});
+        if (!code) {
+            return res.status(404).json({message: "Airport not found"});
+        }
+        return res.json(code);
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({message: "Internal server error"});
+    }
+  })
 const citySchema = new mongoose.Schema({
     name: { type: String, required: true },
     country: { type: String, required: true },
