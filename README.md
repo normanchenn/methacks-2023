@@ -1,3 +1,22 @@
 # Methacks 2023 Project - Journex
-npm run start -> for react
-npm run dev -> for express
+
+## Inspiration 💭
+At Journex, our inspiration stems from a deep passion for travel and a desire to make every journey a truly remarkable experience. Our founding members believe that personalization is the key to unlocking the full potential of travel, allowing individuals to explore the world in a way that aligns with their unique interests, preferences, and aspirations. Our mission is to revolutionize the way people travel by providing personalized travel plans that go beyond generic itineraries and popular getaway destinations, enabling individuals to embark on extraordinary adventures that are tailor-made just for them.
+
+## What it does ⚙️
+Journex is a groundbreaking platform that empowers individuals to embark on personalized travel journeys like never before. Through our innovative technology and expert travel curators, we create customized itineraries that cater to each traveler's specific needs, passions, and curiosities. From selecting the perfect destinations to curating immersive activities, recommending hidden gems, and arranging seamless logistics, Journex crafts meticulously tailored travel plans that turn dreams into reality. Whether it's a solo adventure, a romantic getaway, or a family vacation, Journex ensures that every moment of the journey is extraordinary and unforgettable.
+
+## How we built it 💡
+Building Journex was an exhilarating journey that combined cutting-edge technology with an in-depth understanding of travel dynamics and customer preferences. Our platform harnesses the power of advanced algorithms, machine learning, and data analytics to analyze vast amounts of travel data and generate personalized recommendations. Behind the scenes, our team of experienced travel curators, armed with their extensive knowledge and global network, handcraft unique itineraries encompassing the finest destinations, activities, accommodations, and local experiences.
+
+## Challenges we ran into 🚧
+While working on Journex, we implemented a natural language processing technology; a co:here AI API for embedding, generating, and classifying text. However, accuracy soon became a significant challenge that we ran into. In our specific case, we found that the app classification would often generate inaccurate values. Another challenge was training our own models for specific language processing tasks. This was extremely time-consuming and resource-intensive in the beginning. We were further limited on the amount of data and classification available as well.
+
+## Accomplishments that we're proud of 🎉
+Throughout these three grueling days of building Journex, we are proud of many things! First, it would not have been possible without our collaboration, growth mindset and willingness to learn. When it came to delegated tasks, every team member was eager to get started on their own, no matter how daunting it seemed. For many, it was learning how to implement and integrate the co:here API, for others, it was learning how to utilize Figma. In another light, we are all very proud of the technical back-end aspect and the aesthetic design nature of the front-end. We also found that our back and front-end integration went smoothly because of the hard work and collaboration from both sides.
+
+## What we learned 📝
+Through this entire process, we all learned how important adaptability is. Adapting to new technologies like machine learning AI, adapting to different API documentation and adapting to our newfound sleep schedule. Though these past few days were not easy, it was thanks to the support we received from each other, from our peers, from the MetHacks mentors and the lovely sponsors that we were able to get through to the other side. We learned that in this world filled with tech tools, support is truly the most handiest one.
+
+## What's next for Journex 📍
+Journex provides and pushes for sustainable traveling during a time where covid restrictions are loosening allowing travel once more, but environmental restrictions are tightening. In the long run, we see Journex becoming a one-stop-shop for international and domestic travelers wishing to sustain the environment. This would involve creating a platform that allows users to find, plan and book their trip all on our website! Ultimately, we hope to provide more in-depth information regarding the carbon consumptions on traveling to educate and spread awareness to our users! 
