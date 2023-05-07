@@ -1,48 +1,69 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+const StatsSection = ({ title, data }) => (
+  <div className="p-2">
+    <h2 className="font-bold text-lg">{title}</h2>
+    <ul className="list-disc pl-4">
+      {data.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  </div>
+);
+
+StatsSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export const Stats = () => {
-  const cityData = JSON.parse(sessionStorage.getItem("cityData"));
-  const summary = JSON.parse(sessionStorage.getItem("summary"));
-
+  const cityData = JSON.parse(sessionStorage.getItem('cityData'));
+  const summary = JSON.parse(sessionStorage.getItem('summary'));
 
   return (
-    <div className="bg-orange-100 h-screen relative">
-        <div className="absolute top-10 left-10 h-4/6 w-4/6 rounded-xl bg-cyan-800 bg-opacity-50 text-2xl flex items-center justify-center w-full">
-            <ul>
-                <li>People from {cityData.name} speak {cityData.language}.</li>
-                <li>They use {cityData.currency}.</li>
-                <li>Call {cityData.emergency_service_number} if you are in trouble.</li>
-                <li>You will have to adapt to the {cityData.timezone} timezone.</li>
-                <li>
-                    Locals like to eat the following:
-                    <ul className="pl-4">
-                        {cityData.local_cuisine.map((item, index) => (
-                        <li key={index}>{item}</li>
-                        ))}
-                    </ul>
-                </li>
-                <li>
-                    Be aware of these customs:
-                     <ul className="pl-4">
-                        {cityData.local_customs.map((item, index) => (
-                        <li key={index}>{item}</li>
-                        ))}
-                    </ul>
-                </li>
-            </ul>
+    <div className="flex flex-col items-center justify-center h-full bg-orange-100">
+      <div className="w-full md:w-4/6 lg:w-3/5 xl:w-3/5 bg-cyan-800 bg-opacity-50 text-lg text-center p-7 mb-8 rounded-xl mx-auto md:mx-65 hover:transform hover:scale-110 transition duration-500">
+        <h1 className="font-bold text-2xl mb-4">{cityData.name}, {cityData.country}</h1>
+        <p className="mb-2">
+          People from {cityData.name} speak {cityData.language} and use {cityData.currency}.
+        </p>
+        <p className="mb-2">
+          Call {cityData.emergency_service_number} if you are in trouble.
+        </p>
+        <p className="mb-2">
+          You will have to adapt to the {cityData.timezone} timezone.
+        </p>
+      </div>
+
+      <div className="w-full md:w-4/6 lg:w-4/5 xl:w-3/5 bg-orange-200 opacity-75 text-lg text-center p-8 mb-8 rounded-xl mx-auto md:mx-65 hover:transform hover:scale-110 transition duration-500">
+        <p>
+          Here's some basic information about {cityData.name}, {cityData.country}!
+        </p>
+      </div>
+
+      <div className="flex flex-col md:flex-row w-full justify-between">
+        <div className="w-full md:w-5/12 lg:w-1/2 xl:w-1/3 bg-cyan-800 bg-opacity-50 text-lg text-center p-8 mb-8 rounded-xl mx-auto md:mx-65 hover:transform hover:scale-110 transition duration-500">
+            <StatsSection title="Local Cuisine" data={cityData.local_cuisine} />
         </div>
-        <div className="absolute bottom-14 left-10 h-1/6 w-3/6 rounded-xl bg-orange-200 opacity-75 text-lg flex items-center justify-center w-full z-10">
-            Here's some basic information about {cityData.name}, {cityData.country}!
+        <div className="w-full md:w-5/12 lg:w-1/2 xl:w-1/3 bg-cyan-800 bg-opacity-50 text-lg text-center p-8 mb-8 rounded-xl mx-auto md:mx-65 hover:transform hover:scale-110 transition duration-500">
+            <StatsSection title="Local Customs" data={cityData.local_customs} />
         </div>
-        <div className="absolute bottom-10 right-10 h-2/6 w-3/6 rounded-xl bg-cyan-800 bg-opacity-50 text-xl flex items-center justify-center w-full">
-            <div className="p-10 z-20">
-                Here's a quick summary!
-                {summary}
-            </div>
-        </div>
-        <Link to="/results" className="absolute top-20 right-20 h-3/6 w-1/6 rounded-xl bg-orange-200 bg-opacity-75 flex items-center justify-center text-2xl">Go to Itinerary</Link>
+    </div>
+
+
+    <div className="w-full md:w-4/6 lg:w-3/5 xl:w-3/5 bg-cyan-800 bg-opacity-50 text-lg text-center p-8 mb-8 rounded-xl hover:transform hover:scale-110 transition duration-500">
+        <h2 className="font-bold text-2xl mb-4">Quick Summary</h2>
+        <p>{summary}</p>
+    </div>
+
+    <Link to="/results" className="w-1/3 md:w-1/6 rounded-xl bg-orange-200 bg-opacity-100 text-2xl text-center py-4 hover:transform hover:scale-110 transition duration-500
+             transform hover:rotate-3 hover:-translate-y-3 hover:shadow-lg">
+        Go to Itinerary
+    </Link>
+
+
     </div>
   );
 };
-
