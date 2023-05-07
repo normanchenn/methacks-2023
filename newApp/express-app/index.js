@@ -142,7 +142,41 @@ app.get("/api/flights/:countryName", async (req, res) => {
     console.log(leastLayoverFlights);
 
     const combinedFlights = cheapestFlights.concat(leastLayoverFlights);
-    res.send(combinedFlights);
+
+    function extractFlightProperties(flights) {
+      const extractedProperties = [];
+    
+      for (const flight of flights) {
+        const price = flight.price.total;
+    
+        const numberOfLayovers = flight.itineraries[0].segments.length - 1;
+    
+        const airline = flight.validatingAirlineCodes[0];
+    
+        const startTime = flight.itineraries[0].segments[0].departure.at;
+        const endTime = flight.itineraries[0].segments[flight.itineraries[0].segments.length - 1].arrival.at;
+    
+        const totalDuration = flight.itineraries[0].duration.replace("PT", "");
+        const hours = totalDuration.includes("H") ? parseInt(totalDuration.split("H")[0]) : 0;
+        const minutes = totalDuration.includes("M") ? parseInt(totalDuration.split("H")[1].replace("M", "")) : 0;
+    
+        extractedProperties.push({
+          price,
+          numberOfLayovers,
+          airline,
+          startTime,
+          endTime,
+          totalDuration: { hours, minutes },
+        });
+      }
+    
+      return extractedProperties;
+    }
+    
+
+    const filteredData = extractFlightProperties(combinedFlights);
+    console.log(filteredData);
+    res.send(filteredData);
   });
 });
 
