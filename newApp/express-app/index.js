@@ -41,7 +41,7 @@ app.get("/api/itinerary/:countryName", async (req, res) => {
     const attractionCoordinates = await getAttractionCoordinates(
       finalAttractions
     );
-    // console.log(attractionCoordinates);
+    console.log(attractionCoordinates);
 
     const optimalOrderVisit = await getOptimalOrderOfVisit(
       attractionCoordinates
