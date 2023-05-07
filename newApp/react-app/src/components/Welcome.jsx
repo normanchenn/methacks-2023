@@ -14,9 +14,9 @@ export const Welcome = () => {
         <div className="text-right pt-24 pr-24">
           <Link to="/interests">
             <button
-              className="text-4xl transform hover:-translate-y-1 animate-bounce inline-flex items-center"
+              className="text-4xl transform hover:-translate-y-5 animate-bounce inline-flex items-center"
               style={{
-                animationDuration: '2s',
+                animationDuration: '1s',
                 animationIterationCount: 'infinite',
                 justifyContent: 'flex-end',
                 position: 'absolute',
