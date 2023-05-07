@@ -1,20 +1,17 @@
 import React from 'react'
-// import home-background from
-import {homeBackground} from "../pictures";
+import homeBackground from "./homeBackground.png";
+import { Link } from 'react-router-dom';
 
 export const Welcome = () => {
   return (
-    <div>
-        {/* style={{
-        backgroundImage: `url($../pictures/home-background})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
-      }} */}
-        <div>Hello</div>
-        <div>Explore with Journex</div>
-        <div>A little bit far from home?</div>
-        <img src={homeBackground} alt="my image" />
+    <div className="bg-cover bg-center h-screen z-0" style={{backgroundImage: `url(${homeBackground})`}} >
+        <div className="flex flex-col font-mono text-white">
+            <div className="text-6xl pt-24 pl-24">Hello!</div>
+            <div className="text-8xl text-center pt-24">Explore with Journex</div>
+            <Link to="/interests">
+                <div className="text-4xl text-right pt-24 pr-24">A little bit far from home...?</div>
+            </Link>
+        </div>
     </div>
   )
 }

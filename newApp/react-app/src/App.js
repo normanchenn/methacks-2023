@@ -14,7 +14,7 @@ import { About } from './components/About';
 function App() {
   return (
     <Router>
-      <nav className="border-b border-gray-300">
+      <nav className="bg-cyan-800 border-b border-gray-300 z-10 text-white">
         <ul className="flex p-8">
           <li><Link to="/">Logo!</Link></li>
           {/* <li className="ml-auto"><Link to="/something">something</Link></li> */}
