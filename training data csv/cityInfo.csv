@@ -1,0 +1,14 @@
+name,country,region,population,timezone,currency,language,popular_attractions,emergency_service_number,local_customs,local_cuisine,latitude,longitude
+Tokyo,Japan,Asia,37393129,JST,JPY,Japanese,"Tokyo Skytree, Shibuya Crossing, Meiji Shrine",911,"Bow when greeting someone, remove shoes indoors",Sushi,35.6895,139.6917
+Delhi,India,Asia,30728378,IST,INR,Hindi,"Red Fort, Qutub Minar, Jama Masjid",100,"Namaste as a common greeting, handshakes are also used",Biryani,28.7041,77.1025
+Shanghai,China,Asia,27058479,CST,CNY,Mandarin,"The Bund, Yu Garden, Oriental Pearl Tower",110,"Avoid pointing with your finger, use an open hand instead",Dumplings,31.2304,121.4737
+São Paulo,Brazil,South America,22043028,BRT,BRL,Portuguese,"Ibirapuera Park, Paulista Avenue, São Paulo Museum of Art",192,"Brazilians often greet with a kiss on the cheek",Feijoada,-23.5505,-46.6333
+Mexico City,Mexico,North America,21782378,CST,MXN,Spanish,"Zocalo, Chapultepec Park, Frida Kahlo Museum",911,"Handshakes are common, close friends may hug or kiss on the cheek",Tacos,19.4326,-99.1332
+Cairo,Egypt,Africa,20484965,EET,EGP,Arabic,"Giza Pyramids, Egyptian Museum, Khan El Khalili",122,"Use right hand for greeting and eating, avoid showing the sole of your shoe",Koshari,30.0444,31.2357
+Mumbai,India,Asia,20411157,IST,INR,Hindi,"Gateway of India, Elephanta Caves, Marine Drive",100,"Namaste as a common greeting, handshakes are also used",Vada Pav,19.0760,72.8777
+Beijing,China,Asia,20035455,CST,CNY,Mandarin,"Great Wall of China, Forbidden City, Tiananmen Square",110,"Handshakes are common, avoid physical contact with strangers",Peking Duck,39.9042,116.4074
+Osaka,Japan,Asia,19222665,JST,JPY,Japanese,"Osaka Castle, Universal Studios Japan, Dotonbori",911,"Bow when greeting someone, remove shoes indoors",Okonomiyaki,34.6937,135.5023
+Karachi,Pakistan,Asia,18991647,PKT,PKR,Urdu,"Mohatta Palace, Mazar-e-Quaid, Karachi Safari Park",15,"Men shake hands, women may greet with a hug or a handshake",Biryani,24.8615,67.0099
+Chongqing,China,Asia,18991437,CST,CNY,Mandarin,"Three Gorges Dam, Hongya Cave, Ciqikou",110,"Handshakes are common, avoid physical contact with strangers",Hotpot,29.4316,106.9123
+Istanbul,Turkey,Europe,15190279,TRT,TRY,Turkish,"Hagia Sophia, Blue Mosque, Topkapi Palace",112,"Shaking hands is
+
