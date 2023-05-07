@@ -23,134 +23,31 @@ app.get("/api/suitableAttractions/:countryName", (req, res) => {
   const currentSeason = getSeason(currentDate);
   console.log(`The current season is: ${currentSeason}`);
 
-  const filePath = "./attractions.txt";
-  readFileToString(filePath, (error, fileContent) => {
+  const attractionPath = "./attractions.txt";
+  readFileToString(attractionPath, (error, attractionContent) => {
     if (error) {
       console.error("Error reading file:", error);
       return;
     }
-    const {countryName} = req.params;
-    const attractions = getTouristAttractions(fileContent, countryName);
+    const { countryName } = req.params;
+    const attractions = getTouristAttractions(attractionContent, countryName);
     console.log(attractions);
-
-    processAttractions(attractions);
+    const airportPath = "./airports.txt";
+    readFileToString(airportPath, (error, airportContent) => {
+      if (error) {
+        console.error("Error reading file:", error);
+        return;
+      }
+      const airports = getInternationalAirportsByCountry(
+        airportContent,
+        countryName
+      );
+      console.log(airports);
+    });
+      processAttractions(attractions);
   });
-
   res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
 });
-
-function getSeason(date) {
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  if ((month === 12 && day >= 21) || (month <= 2 && day < 20)) {
-    return "Winter";
-  } else if (month >= 3 && month <= 5) {
-    return "Spring";
-  } else if (month >= 6 && month <= 8) {
-    return "Summer";
-  } else {
-    return "Fall";
-  }
-}
-
-async function weatherDependent(attractionName) {
-  try {
-    cohere.init(process.env.COHERE_API_KEY);
-    const activityArray = [attractionName];
-    const response = await cohere.classify({
-      model: "09119595-f5d0-42b8-9ea5-02905414db32-ft",
-      inputs: activityArray,
-    });
-    const prediction = response.body.classifications[0].prediction;
-    return prediction;
-  } catch (error) {
-    console.error("Error classifying data:", error);
-  }
-}
-
-async function bestSeason(attractionName) {
-  try {
-    cohere.init(process.env.COHERE_API_KEY);
-    const activityArray = [attractionName];
-    const response = await cohere.classify({
-      model: "4a6c58b4-7be4-4875-83dd-6a0f23248fec-ft",
-      inputs: activityArray,
-    });
-
-    const prediction = response.body.classifications[0].prediction;
-    return prediction;
-  } catch (error) {
-    console.error("Error classifying data:", error);
-  }
-}
-
-function getTouristAttractions(text, countryName) {
-  const lines = text.split("\n");
-  const attractions = [];
-
-  let isTargetCountry = false;
-  for (let line of lines) {
-    line = line.trim();
-
-    if (line === countryName) {
-      isTargetCountry = true;
-    } else if (line.startsWith(countryName)) {
-      isTargetCountry = false;
-    } else if (isTargetCountry && line !== "") {
-      const attraction = line.split(". ")[1];
-      attractions.push(attraction);
-    }
-    if (attractions.length === 10) {
-      break;
-    }
-  }
-  return attractions;
-}
-
-function readFileToString(filePath, callback) {
-  fs.readFile(filePath, "utf-8", (error, data) => {
-    if (error) {
-      callback(error, null);
-      return;
-    }
-
-    const fileContent = data;
-    callback(null, fileContent);
-  });
-}
-
-async function suitableAttractions(attractions) {
-  console.log("Started classifying");
-  const weatherDependentAttractions = [];
-
-  for (let i = 0; i < attractions.length; i++) {
-    const attraction = attractions[i];
-    try {
-      const prediction = await weatherDependent(attraction);
-      const season = await bestSeason(attraction);
-      console.log(`Prediction for ${attraction}: ${prediction} ${season}`);
-      if (prediction === " no") {
-        weatherDependentAttractions.push(attraction);
-      } else if (prediction === " yes") {
-        const currentDate = new Date();
-        const currentSeason = getSeason(currentDate);
-
-        if (season === currentSeason) {
-          console.log("was here");
-          weatherDependentAttractions.push(attraction);
-        }
-      }
-    } catch (error) {
-      console.error(`Error classifying ${attraction}:`, error);
-    }
-  }
-  return weatherDependentAttractions;
-}
-
-async function processAttractions(attractions) {
-  const weatherDependentAttractions = await suitableAttractions(attractions);
-  console.log("Weather dependent attractions:", weatherDependentAttractions);
-}
 
 // fetch metadata for cities
 mongoose.connect(process.env.MONGODB_URI, {
@@ -172,6 +69,7 @@ const citySchema = new mongoose.Schema({
   latitude: { type: Number, required: true },
   longitude: { type: Number, required: true },
 });
+
 const City = mongoose.model("City2", citySchema);
 app.get("/api/cities/:name", async (req, res) => {
   const { name } = req.params;
@@ -289,7 +187,7 @@ app.get(
           console.log("---------------------------------------");
         });
 
-        res.json(JSON.stringify(response.data));
+        // res.json(JSON.stringify(response.data));
       } catch (error) {
         console.error(error.response?.data || error.message);
         res.status(500).json({ error: "Failed to retrieve flight offers" });
@@ -345,43 +243,7 @@ app.get("/api/googlemaps/neareastAirport", async (req, res) => {
     console.error("Error getting user location:", error);
     res.status(500).send("Error getting user location");
   }
-
-  async function getAirportIataCode(airportName) {
-    try {
-      const response = await axios.get(
-        "https://api.aviationstack.com/v1/airports",
-        {
-          params: {
-            access_key: accessKey,
-            search: airportName,
-          },
-        }
-      );
-
-      const airports = response.data.data;
-      if (airports.length > 0) {
-        const airport = airports[0];
-        const iataCode = airport.iata_code;
-        return iataCode;
-      } else {
-        throw new Error(`No airport found for the name "${airportName}"`);
-      }
-    } catch (error) {
-      throw new Error("Error retrieving airport information: " + error.message);
-    }
-  }
-
-  try {
-    const iataCode = await getAirportIataCode(airportName);
-    console.log(`The IATA code for ${airportName} is ${iataCode}`);
-  } catch (error) {
-    console.error(error.message);
-  }
 });
-
-// finds the suitable attractions
-
-// templates
 
 app.get("/", (req, res) => {
   res.send("Hello World!, from new app");
@@ -391,3 +253,140 @@ const PORT = 4321;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+/* helper functions */
+
+function getSeason(date) {
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  if ((month === 12 && day >= 21) || (month <= 2 && day < 20)) {
+    return "Winter";
+  } else if (month >= 3 && month <= 5) {
+    return "Spring";
+  } else if (month >= 6 && month <= 8) {
+    return "Summer";
+  } else {
+    return "Fall";
+  }
+}
+
+async function weatherDependent(attractionName) {
+  try {
+    cohere.init(process.env.COHERE_API_KEY);
+    const activityArray = [attractionName];
+    const response = await cohere.classify({
+      model: "09119595-f5d0-42b8-9ea5-02905414db32-ft",
+      inputs: activityArray,
+    });
+    const prediction = response.body.classifications[0].prediction;
+    return prediction;
+  } catch (error) {
+    console.error("Error classifying data:", error);
+  }
+}
+
+async function bestSeason(attractionName) {
+  try {
+    cohere.init(process.env.COHERE_API_KEY);
+    const activityArray = [attractionName];
+    const response = await cohere.classify({
+      model: "4a6c58b4-7be4-4875-83dd-6a0f23248fec-ft",
+      inputs: activityArray,
+    });
+
+    const prediction = response.body.classifications[0].prediction;
+    return prediction;
+  } catch (error) {
+    console.error("Error classifying data:", error);
+  }
+}
+
+function getTouristAttractions(text, countryName) {
+  const lines = text.split("\n");
+  const attractions = [];
+
+  let isTargetCountry = false;
+  for (let line of lines) {
+    line = line.trim();
+
+    if (line === countryName) {
+      isTargetCountry = true;
+    } else if (line.startsWith(countryName)) {
+      isTargetCountry = false;
+    } else if (isTargetCountry && line !== "") {
+      const attraction = line.split(". ")[1];
+      attractions.push(attraction);
+    }
+    if (attractions.length === 10) {
+      break;
+    }
+  }
+  return attractions;
+}
+
+function readFileToString(filePath, callback) {
+  fs.readFile(filePath, "utf-8", (error, data) => {
+    if (error) {
+      callback(error, null);
+      return;
+    }
+
+    const fileContent = data;
+    callback(null, fileContent);
+  });
+}
+
+async function suitableAttractions(attractions) {
+  console.log("Started classifying");
+  const weatherDependentAttractions = [];
+
+  for (let i = 0; i < attractions.length; i++) {
+    const attraction = attractions[i];
+    try {
+      const prediction = await weatherDependent(attraction);
+      const season = await bestSeason(attraction);
+      console.log(`Prediction for ${attraction}: ${prediction} ${season}`);
+      if (prediction === " no") {
+        weatherDependentAttractions.push(attraction);
+      } else if (prediction === " yes") {
+        const currentDate = new Date();
+        const currentSeason = getSeason(currentDate);
+
+        if (season === currentSeason) {
+          console.log("was here");
+          weatherDependentAttractions.push(attraction);
+        }
+      }
+    } catch (error) {
+      console.error(`Error classifying ${attraction}:`, error);
+    }
+  }
+  return weatherDependentAttractions;
+}
+
+async function processAttractions(attractions) {
+  const weatherDependentAttractions = await suitableAttractions(attractions);
+  console.log("Weather dependent attractions:", weatherDependentAttractions);
+}
+
+function getInternationalAirportsByCountry(data, countryName) {
+  var lines = data.split("\n");
+  var result = [];
+
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i].trim();
+    if (line !== "") {
+      var parts = line.split(",");
+      if (parts.length >= 3) {
+        var country = parts[0].trim();
+        var airportName = parts[1].trim();
+        var airportCode = parts[2].trim();
+
+        if (country === countryName) {
+          result.push([airportName, airportCode]);
+        }
+      }
+    }
+  }
+  return result;
+}

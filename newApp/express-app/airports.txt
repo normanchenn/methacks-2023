@@ -1,0 +1,415 @@
+Afghanistan,Hamid Karzai International Airport (Kabul),KBL
+Albania,Tirana International Airport Nënë Tereza,TIA
+Algeria,Houari Boumediene Airport (Algiers),ALG
+Andorra,Andorra–La Seu d'Urgell Airport,LEU
+Angola,Quatro de Fevereiro Airport (Luanda),LAD
+Antigua and Barbuda,V.C. Bird International Airport (St. John's),ANU
+Argentina,Ministro Pistarini International Airport (Buenos Aires),EZE
+Argentina,Aeroparque Jorge Newbery (Buenos Aires),AEP
+Armenia,Zvartnots International Airport (Yerevan),EVN
+Australia,Sydney Kingsford-Smith Airport,SYD
+Australia,Melbourne Airport,MEL
+Australia,Brisbane Airport,BNE
+Australia,Perth Airport,PER
+Austria,Vienna International Airport,VIE
+Azerbaijan,Heydar Aliyev International Airport (Baku),GYD
+Bahamas,Lynden Pindling International Airport (Nassau),NAS
+Bahrain,Bahrain International Airport,BAH
+Bangladesh,Shahjalal International Airport (Dhaka),DAC
+Barbados,Grantley Adams International Airport (Bridgetown),BGI
+Belarus,Minsk National Airport,MSQ
+Belgium,Brussels Airport,BRU
+Belize,Philip S. W. Goldson International Airport (Belize City),BZE
+Benin,Cadjehoun Airport (Cotonou),COO
+Bhutan,Paro International Airport,PBH
+Bolivia,El Alto International Airport (La Paz),LPB
+Bolivia,Viru Viru International Airport (Santa Cruz),VVI
+Bosnia and Herzegovina,Sarajevo International Airport,SJJ
+Botswana,Sir Seretse Khama International Airport (Gaborone),GBE
+Brazil,São Paulo–Guarulhos International Airport,GRU
+Brazil,Rio de Janeiro–Galeão International Airport,GIG
+Brazil,Brasília International Airport,BSB
+Brunei,Brunei International Airport,BWN
+Bulgaria,Sofia Airport,SOF
+Burkina Faso,Ouagadougou Airport,OUA
+Burundi,Bujumbura International Airport,BJM
+Cambodia,Phnom Penh International Airport,PNH
+Cambodia,Siem Reap International Airport,REP
+Cameroon,Douala International Airport,DLA
+Cameroon,Yaoundé Nsimalen International Airport,NSI
+Cameroon,Garoua International Airport,GOU
+Canada,Toronto Pearson International Airport,YYZ
+Canada,Vancouver International Airport,YVR
+Canada,Montréal–Pierre Elliott Trudeau International Airport,YUL
+Cape Verde,Amílcar Cabral International Airport (Sal),SID
+Cape Verde,Nelson Mandela International Airport (Praia),RAI
+Chad,N'Djamena International Airport,NDJ
+Chile,Comodoro Arturo Merino Benítez International Airport (Santiago),SCL
+Chile,Mataveri International Airport (Easter Island),IPC
+China,Beijing Capital International Airport,PEK
+China,Shanghai Pudong International Airport,PVG
+China,Guangzhou Baiyun International Airport,CAN
+China,Hong Kong International Airport,HKG
+Colombia,El Dorado International Airport (Bogotá),BOG
+Colombia,Jose Maria Cordova International Airport (Medellín),MDE
+Colombia,Rafael Núñez International Airport (Cartagena),CTG
+Comoros,Prince Said Ibrahim International Airport (Moroni),HAH
+Congo,Maya-Maya Airport (Brazzaville),BZV
+Congo,N'Djili Airport (Kinshasa),FIH
+Costa Rica,Juan Santamaría International Airport (San José),SJO
+Croatia,Zagreb Airport,ZAG
+Cuba,Jose Marti International Airport (Havana),HAV
+Cuba,Jardines del Rey Airport (Cayo Coco),CCC
+Cuba,Varadero International Airport,VRA
+Cyprus,Larnaca International Airport,LCA
+Czech Republic,Václav Havel Airport Prague,PRG
+Denmark,Copenhagen Airport,CPH
+Djibouti,Ambouli International Airport,JIB
+Dominica,Douglas-Charles Airport (Dominica),DOM
+Dominican Republic,Punta Cana International Airport,PUJ
+Dominican Republic,Las Americas International Airport (Santo Domingo),SDQ
+East Timor,Presidente Nicolau Lobato International Airport (Dili),DIL
+Ecuador,Mariscal Sucre International Airport (Quito),UIO
+Ecuador,Jose Joaquin de Olmedo International Airport (Guayaquil),GYE
+Egypt,Cairo International Airport,CAI
+Egypt,Hurghada International Airport,HRG
+Egypt,Sharm El Sheikh International Airport,SSH
+El Salvador,Monseñor Óscar Arnulfo Romero International Airport (San Salvador),SAL
+Equatorial Guinea,Malabo International Airport,SSG
+Eritrea,Asmara International Airport,ASM
+Estonia,Tallinn Airport,TLL
+Eswatini,King Mswati III International Airport (Manzini),SHO
+Ethiopia,Addis Ababa Bole International Airport,ADD
+Fiji,Nadi International Airport,NAN
+Finland,Helsinki Airport,HEL
+France,Charles de Gaulle Airport (Paris),CDG
+France,Paris Orly Airport,ORY
+France,Nice Côte d'Azur Airport,NCE
+France,Lyon–Saint-Exupéry Airport,LYS
+Gabon,Libreville International Airport,LBV
+Gambia,Banjul International Airport,BJL
+Georgia,Tbilisi International Airport,TBS
+Germany,Frankfurt Airport,FRA
+Germany,Munich Airport,MUC
+Germany,Berlin Brandenburg Airport,BER
+Ghana,Kotoka International Airport (Accra),ACC
+Greece,Athens International Airport,ATH
+Greece,Thessaloniki Airport,SKG
+Grenada,Maurice Bishop International Airport,GND
+Guatemala,La Aurora International Airport (Guatemala City),GUA
+Guinea,Conakry International Airport,CKY
+Guinea-Bissau,Osvaldo Vieira International Airport (Bissau),OXB
+Guyana,Cheddi Jagan International Airport (Georgetown),GEO
+Haiti,Toussaint Louverture International Airport (Port-au-Prince),PAP
+Honduras,Toncontín International Airport (Tegucigalpa),TGU
+Honduras,Ramon Villeda Morales International Airport (San Pedro Sula),SAP
+Iceland,Keflavík International Airport,KEF
+India,Indira Gandhi International Airport (Delhi),DEL
+India,Chhatrapati Shivaji Maharaj International Airport (Mumbai),BOM
+India,Kempegowda International Airport (Bengaluru),BLR
+India,Chennai International Airport,MAA
+India,Netaji Subhash Chandra Bose International Airport (Kolkata),CCU
+India,Rajiv Gandhi International Airport (Hyderabad),HYD
+India,Cochin International Airport,COK
+India,Goa International Airport,GOI
+India,Pune International Airport,PNQ
+India,Ahmedabad International Airport,AMD
+India,Jaipur International Airport,JAI
+India,Sardar Vallabhbhai Patel International Airport (Ahmedabad),AMD
+Indonesia,Soekarno-Hatta International Airport (Jakarta),CGK
+Indonesia,Ngurah Rai International Airport (Bali),DPS
+Indonesia,Sultan Hasanuddin International Airport (Makassar),UPG
+Iran,Imam Khomeini International Airport (Tehran),IKA
+Iran,Mehrabad International Airport (Tehran),THR
+Iran,Mashhad International Airport,MHD
+Iraq,Baghdad International Airport,BGW
+Ireland,Dublin Airport,DUB
+Israel,Ben Gurion Airport (Tel Aviv),TLV
+Italy,Leonardo da Vinci-Fiumicino Airport (Rome),FCO
+Italy,Milan Malpensa Airport,MXP
+Italy,Milan Linate Airport,LIN
+Italy,Venice Marco Polo Airport,VCE
+Italy,Naples International Airport,NAP
+Italy,Florence Airport,FLR
+Italy,Bologna Guglielmo Marconi Airport,BLQ
+Italy,Turin Airport,TRN
+Jamaica,Norman Manley International Airport (Kingston),KIN
+Jamaica,Sangster International Airport (Montego Bay),MBJ
+Japan,Narita International Airport (Tokyo),NRT
+Japan,Haneda Airport (Tokyo),HND
+Japan,Kansai International Airport (Osaka),KIX
+Jordan,Queen Alia International Airport (Amman),AMM
+Kazakhstan,Nursultan Nazarbayev International Airport (Nur-Sultan),NQZ
+Kazakhstan,Almaty International Airport,ALA
+Kenya,Jomo Kenyatta International Airport (Nairobi),NBO
+Kenya,Moi International Airport (Mombasa),MBA
+Kiribati,Bonriki International Airport (Tarawa),TRW
+Kuwait,Kuwait International Airport,KWI
+Kyrgyzstan,Manas International Airport (Bishkek),FRU
+Laos,Wattay International Airport (Vientiane),VTE
+Latvia,Riga International Airport,RIX
+Lebanon,Beirut-Rafic Hariri International Airport,BEY
+Lesotho,Moshoeshoe I International Airport (Maseru),MSU
+Liberia,Roberts International Airport (Monrovia),ROB
+Libya,Tripoli International Airport,TIP
+Liechtenstein,St Gallen-Altenrhein Airport,ACH
+Lithuania,Vilnius Airport,VNO
+Luxembourg,Findel Airport,LUX
+Madagascar,Ivato International Airport (Antananarivo),TNR
+Malawi,Kamuzu International Airport (Lilongwe),LLW
+Malaysia,Kuala Lumpur International Airport,KUL
+Maldives,Male International Airport,MLE
+Malta,Malta International Airport,MLA
+Marshall Islands,Marshall Islands International Airport (Majuro),MAJ
+Mauritania,Nouakchott–Oumtounsy International Airport,NKC
+Mauritius,Sir Seewoosagur Ramgoolam International Airport,MRU
+Mexico,Mexico City International Airport,MEX
+Mexico,Cancún International Airport,CUN
+Mexico,Guanajuato International Airport (León/Guanajuato),BJX
+Mexico,Mérida International Airport,MID
+Mexico,Monterrey International Airport,MTY
+Mexico,Tijuana International Airport,TIJ
+Mexico,Los Cabos International Airport,SJD
+Mexico,Puerto Vallarta International Airport,PVR
+Mexico,Cozumel International Airport,CZM
+Mexico,Chichen Itza International Airport,CZA
+Mexico,Oaxaca International Airport,OAX
+Mexico,Huatulco International Airport,HUX
+Mexico,Chetumal International Airport,CTM
+Mexico,Zacatecas International Airport,ZCL
+Mexico,Puebla International Airport,PBC
+Mexico,Querétaro International Airport,QRO
+Mexico,Tuxtla Gutiérrez International Airport,TGZ
+Mexico,Toluca International Airport,TLC
+Mexico,Villahermosa International Airport,VSA
+Mexico,Ciudad del Carmen International Airport,CME
+Mexico,Veracruz International Airport,VER
+Mexico,Mazatlán International Airport,MZT
+Mexico,Culiacán International Airport,CUL
+Mexico,Acapulco International Airport,ACA
+Mexico,Chihuahua International Airport,CUU
+Mexico,Tampico International Airport,TAM
+Mexico,Torreon International Airport,TRC
+Mexico,Manzanillo International Airport,ZLO
+Mexico,Minatitlán/Coatzacoalcos International Airport,MTT
+Mexico,Reynosa International Airport,REX
+Mexico,Leonardo Rodriguez Alcazar Airport (San Luis Potosí),SLP
+Mexico,Colima International Airport,CLQ
+Mexico,Ciudad Juarez International Airport,CJS
+Mexico,Uruapan International Airport,UPN
+Mexico,Los Mochis International Airport,LMM
+Mexico,Puerto Escondido International Airport,PXM
+Mexico,Matamoros International Airport,MAM
+Mexico,Guadalajara International Airport,GDL
+Mexico,La Paz International Airport,LPB
+Mexico,General Lucio Blanco International Airport(REX),REX
+Mexico,Durango International Airport,DGO
+Mexico,Ciudad Obregón International Airport,CEN
+Mexico,Ciudad Victoria International Airport,CVM
+Mexico,Ciudad Acuña International Airport,ACN
+Mexico,Campeche International Airport,CPE
+Mexico,Chilpancingo International Airport,IZT
+Mexico,Tapachula International Airport,TAP
+Mexico,Saltillo International Airport,SLW
+Mexico,Los Pinos Airport (Valle de Bravo),VIB
+Mexico,Puerto Peñasco International Airport,PPE
+Mexico,Atizapan de Zaragoza Airport,AZP
+Mexico,Bahías de Huatulco International Airport,HUX
+Mexico,El Lencero Airport,VER
+Mexico,San Felipe International Airport,SNF
+Mexico,Quetzalcóatl International Airport,NEW
+Mexico,Chalchihuites International Airport,HUX
+Mexico,Lázaro Cárdenas International Airport,LZC
+Mexico,Plan de Guadalupe International Airport,SLW
+Mexico,Del Bajío International Airport,BJ
+Micronesia,Chuuk International Airport,TKK
+Micronesia,Kosrae International Airport,KSA
+Micronesia,Pohnpei International Airport,PNI
+Micronesia,Yap International Airport,YAP
+Moldova,Chisinau International Airport,KIV
+Moldova,Balti International Airport,BZY
+Monaco,Nice Côte d'Azur Airport,NCE
+Monaco,Monaco Heliport,MCM
+Mongolia,Chinggis Khaan International Airport,ULN
+Montenegro,Podgorica Airport,TGD
+Montenegro,Tivat Airport,TIV
+Montserrat,John A. Osborne Airport,MNI
+Morocco,Marrakech Menara Airport,RAK
+Morocco,Mohammed V International Airport,CMN
+Morocco,Fes-Saïss Airport,FEZ
+Morocco,Rabat-Salé Airport,RBA
+Morocco,Ouarzazate Airport,OZZ
+Morocco,Agadir-Al Massira Airport,AGA
+Morocco,Tanger Ibn Battouta Airport,TNG
+Morocco,Nador International Airport,NDR
+Mozambique,Maputo International Airport,MPM
+Mozambique,Beira Airport,BEW
+Mozambique,Nampula Airport,APL
+Mozambique,Pemba Airport,POL
+Mozambique,Inhambane Airport,INH
+Mozambique,Vilankulo Airport,VNX
+Mozambique,Quelimane Airport,UEL
+Mozambique,Chimoio Airport,VPY
+Mozambique,Tete Matunda Airport,TET
+Mozambique,Lichinga Airport,VXC
+Mozambique,Mueda Airport,MUD
+Mozambique,Mocímboa da Praia Airport,MZB
+Mozambique,Marrupa Airport,MFU
+Myanmar,Yangon International Airport,RGN
+Myanmar,Mandalay International Airport,MDL
+Myanmar,Nyaung U Airport,NYU
+Myanmar,Naypyidaw International Airport,ELA
+Namibia,Hosea Kutako International Airport,WDH
+Namibia,Eros Airport,ERS
+Namibia,Walvis Bay Airport,WVB
+Namibia,Ondangwa Airport,OND
+Namibia,Rundu Airport,NDU
+Namibia,Luderitz Airport,LUD
+Namibia,Keetmanshoop Airport,KMP
+Namibia,Oranjemund Airport,OMD
+Nauru,Nauru International Airport,INU
+Nepal,Tribhuvan International Airport,KTM
+Nepal,Pokhara Airport,PKR
+Nepal,Bharatpur Airport,BHR
+Nepal,Surkhet Airport,SIF
+Nepal,Sanfebagar Airport,FEB
+Nepal,Jumla Airport,JUM
+Nepal,Taplejung Airport,TMJ
+Nepal,Dolpa Airport,DOP
+Nepal,Suketar Airport,SKT
+Nepal,Simara Airport,SIF
+Nepal,Rajbiraj Airport,RJB
+Nepal,Ramechhap Airport,RHP
+Nepal,Rajkot Airport,RJK
+Nepal,Rumjatar Airport,RUM
+Nepal,Rukumkot Airport,RUK
+Nepal,Rolpa Airport,RPA
+Nepal,Thamkharka Airport,TKA
+Nepal,Tulsipur Airport,DNP
+Nepal,Tuclungen Airport,TUI
+Nepal,Tumling Tar Airport,TMI
+Nepal,Tumling
+Netherlands,Amsterdam Airport Schiphol,AMS
+New Zealand,Auckland Airport,AKL
+New Zealand,Wellington Airport,WLG
+New Zealand,Christchurch Airport,CHC
+Nicaragua,Augusto C. Sandino International Airport (Managua),MGA
+Niger,Diori Hamani International Airport (Niamey),NIM
+Nigeria,Murtala Muhammed International Airport (Lagos),LOS
+Nigeria,Nnamdi Azikiwe International Airport (Abuja),ABV
+North Korea,Pyongyang International Airport,FNJ
+North Macedonia (formerly Macedonia),Skopje International Airport,SKP
+North Macedonia (formerly Macedonia),Ohrid St. Paul the Apostle Airport,OHD
+Norway,Oslo Airport, Gardermoen,OSL
+Norway,Bergen Airport, Flesland,BGO
+Oman,Muscat International Airport,MCT
+Oman,Salalah Airport,SLL
+Pakistan,Jinnah International Airport (Karachi),KHI
+Pakistan,Allama Iqbal International Airport (Lahore),LHE
+Pakistan,Islamabad International Airport,ISB
+Palau,Roman Tmetuchl International Airport (Koror),ROR
+Palestine,Queen Alia International Airport (Amman, Jordan),AMM
+Panama,Tocumen International Airport (Panama City),PTY
+Panama,Enrique Malek International Airport (David),DAV
+Papua New Guinea,Jacksons International Airport (Port Moresby),POM
+Papua New Guinea,Mount Hagen Kagamuga Airport,HGU
+Paraguay,Silvio Pettirossi International Airport (Asunción),ASU
+Peru,Jorge Chávez International Airport (Lima),LIM
+Peru,Alejandro Velasco Astete International Airport (Cusco),CUZ
+Philippines,Ninoy Aquino International Airport (Manila),MNL
+Philippines,Mactan-Cebu International Airport (Cebu),CEB
+Philippines,Clark International Airport (Angeles),CRK
+Poland,Warsaw Chopin Airport,WAW
+Poland,John Paul II International Airport Kraków–Balice,KRK
+Portugal,Lisbon Portela Airport,LIS
+Portugal,Francisco Sá Carneiro Airport (Porto),OPO
+Portugal,Faro Airport,FAO
+Qatar,Hamad International Airport (Doha),DOH
+Romania,Henri Coandă International Airport (Bucharest),OTP
+Romania,Cluj International Airport,CLJ
+Russia,Sheremetyevo International Airport (Moscow),SVO
+Russia,Domodedovo International Airport (Moscow),DME
+Russia,Pulkovo Airport (St. Petersburg),LED
+Rwanda,Kigali International Airport,KGL
+Saint Kitts and Nevis,Robert L. Bradshaw International Airport (Basseterre),SKB
+Saint Lucia,Hewanorra International Airport,UVF
+Saint Lucia,George F. L. Charles Airport (Castries),SLU
+Saint Vincent and the Grenadines,Argyle International Airport (Kingstown),SVD
+Samoa,Faleolo International Airport,APW
+San Marino,Federico Fellini International Airport (Rimini, Italy),RMI
+São Tomé and Príncipe,São Tomé International Airport,TMS
+Saudi Arabia,King Abdulaziz International Airport (Jeddah),JED
+Saudi Arabia,King Khalid International Airport (Riyadh),RUH
+Senegal,Blaise Diagne International Airport (Dakar),DSS
+Serbia,Belgrade Nikola Tesla Airport,BEG
+Serbia,Niš Constantine the Great Airport,INI
+Seychelles,Seychelles International Airport (Mahé),SEZ
+Sierra Leone,Lungi International Airport (Freetown),FNA
+Singapore,Singapore Changi Airport,SIN
+Slovakia,M. R. Štefánik Airport (Bratislava),BTS
+Slovakia,Košice International Airport,KSC
+Slovenia,Ljubljana Jože Pučnik Airport,LJU
+Solomon Islands,Honiara International Airport,HIR
+Somalia,Aden Adde International Airport (Mogadishu),MGQ
+South Africa,O. R. Tambo International Airport (Johannesburg),JNB
+South Africa,Cape Town International Airport,CPT
+South Africa,King Shaka International Airport (Durban),DUR
+South Korea,Incheon International Airport (Seoul),ICN
+South Korea,Gimpo International Airport (Seoul),GMP
+South Sudan,Juba International Airport,JUB
+Spain,Adolfo Suárez Madrid–Barajas Airport,MAD
+Spain,Barcelona–El Prat Airport,BCN
+Spain,Palma de Mallorca Airport,PMI
+Sri Lanka,Bandaranaike International Airport (Colombo),CMB
+Sri Lanka,Mattala Rajapaksa International Airport (Hambantota),HRI
+Sudan,Khartoum International Airport,KRT
+Suriname,Johan Adolf Pengel International Airport (Paramaribo),PBM
+Sweden,Stockholm Arlanda Airport,ARN
+Sweden,Göteborg Landvetter Airport,GOT
+Switzerland,Zurich Airport,ZRH
+Switzerland,Geneva Airport,GVA
+Syria,Damascus International Airport,DAM
+Syria,Aleppo International Airport,ALP
+Taiwan,Taiwan Taoyuan International Airport (Taipei),TPE
+Taiwan,Kaohsiung International Airport,KHH
+Tajikistan,Dushanbe International Airport,DYU
+Tanzania,Julius Nyerere International Airport (Dar es Salaam),DAR
+Tanzania,Kilimanjaro International Airport,JRO
+Tanzania,Abeid Amani Karume International Airport (Zanzibar),ZNZ
+Thailand,Suvarnabhumi Airport (Bangkok),BKK
+Thailand,Don Mueang International Airport (Bangkok),DMK
+Thailand,Phuket International Airport,HKT
+Timor-Leste (East Timor),Presidente Nicolau Lobato International Airport (Dili),DIL
+Togo,Lomé-Tokoin Airport,LFW
+Tonga,Fuaʻamotu International Airport (Nukuʻalofa),TBU
+Trinidad and Tobago,Piarco International Airport (Port of Spain),POS
+Tunisia,Tunis–Carthage International Airport,TUN
+Turkey,Istanbul Airport,IST
+Turkey,Sabiha Gökçen International Airport (Istanbul),SAW
+Turkey,Antalya Airport,AYT
+Turkmenistan,Ashgabat International Airport,ASB
+Turks and Caicos Islands,Providenciales International Airport,PLS
+Tuvalu,Funafuti International Airport,FUN
+Uganda,Entebbe International Airport,EBB
+Ukraine,Boryspil International Airport (Kyiv),KBP
+Ukraine,Lviv Danylo Halytskyi International Airport,LWO
+United Arab Emirates,Dubai International Airport,DXB
+United Arab Emirates,Abu Dhabi International Airport,AUH
+United Kingdom,London Heathrow Airport,LHR
+United Kingdom,London Gatwick Airport,LGW
+United Kingdom,Manchester Airport,MAN
+United States,John F. Kennedy International Airport (New York City),JFK
+United States,Los Angeles International Airport,LAX
+United States,Hartsfield–Jackson Atlanta International Airport,ATL
+Uruguay,Carrasco International Airport (Montevideo),MVD
+Uzbekistan,Tashkent International Airport,TAS
+Vanuatu,Bauerfield International Airport (Port Vila),VLI
+Vatican City,Vatican City Heliport,CVI
+Venezuela,Simón Bolívar International Airport (Caracas),CCS
+Venezuela,La Chinita International Airport (Maracaibo),MAR
+Vietnam,Noi Bai International Airport (Hanoi),HAN
+Vietnam,Tan Son Nhat International Airport (Ho Chi Minh City),SGN
+Yemen,Sana'a International Airport,SAH
+Zambia,Kenneth Kaunda International Airport (Lusaka),LUN
+Zimbabwe,Harare International Airport,HRE
+Zimbabwe,Victoria Falls International Airport,VFA
