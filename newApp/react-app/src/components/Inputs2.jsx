@@ -1,39 +1,31 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export const Inputs = () => {
-    const [name, setName] = useState("");
+export const Inputs2 = () => {
+    const [days, setDays] = useState(0);
     const [display, setDisplay] = useState(false);
     const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(`Name: ${name}`);
-        fetch(`http://localhost:4321/api/cities/${name}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                sessionStorage.setItem("cityData", JSON.stringify(data));
-                navigate('/stats');
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        console.log(`Days: ${days}`);
+        sessionStorage.setItem("Days", JSON.stringify(days));
+        navigate('/stats');
     }  
     const handleChange = (event) => {
-        setName(event.target.value);
+        setDays(event.target.value);
     }
     useEffect(() => {
-        if (name.length > 0){
+        if (days.toString().length > 0){
             setDisplay(true);
         }
         else {
             setDisplay(false);
         }
-      }, [name]);
+      }, [days]);
   return (
 
     <div className="bg-gradient-to-b from-orange-100 to-cyan-800 h-screen flex flex-col">
-        <div className=" h-20 flex items-center justify-center m-24 rounded-full opacity-50 bg-slate-400"><p className="text-4xl text-white">Where's your destination?  (1/2)</p></div>
+        <div className=" h-20 flex items-center justify-center m-24 rounded-full opacity-50 bg-slate-400"><p className="text-4xl text-white">How many days will you visit? (2/2)</p></div>
             {/* <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter text" /> */}
         <form className="flex items-center justify-center px-60" onSubmit={handleSubmit}>
             <input type="text" onChange={handleChange} className="border-b border-gray-500 outline-none bg-transparent w-full text-6xl p-4 text-center text-white" />
