@@ -3,12 +3,13 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 const mapStyles = {
   position: 'fixed',
-  top: '10%',
-  left: '25%',
-  width: '50%',
-  height: '50%',
+  top: '3%',
+  left: '3%',
+  width: '37%',
+  height: '45%',
   zIndex: '1'
 };
+
 
 const MapContainer = (props) => {
   const { google, cityData } = props;
@@ -33,16 +34,16 @@ const MapContainer = (props) => {
   return (
     <>
       {initialized && showMap && ( // only render map if initialized and showMap are both true
-        <Map
-          google={google}
-          zoom={8}  
-          style={mapStyles}
-          center={{ lat: latitude, lng: longitude}}
-        >
-          <Marker
-            position={{ lat: latitude, lng: longitude}}
-          />
-        </Map>
+      <Map
+        google={google}
+        zoom={8}  
+        style={{ ...mapStyles, border: '2px solid black', borderRadius: '10px' }}
+        center={{ lat: latitude, lng: longitude}}
+      >
+      <Marker
+        position={{ lat: latitude, lng: longitude}}
+      />
+      </Map>
       )}
     </>
   );
