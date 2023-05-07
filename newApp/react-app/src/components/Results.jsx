@@ -11,7 +11,7 @@ export const Results = () => {
     <div className="flex flex-row h-screen bg-gradient-to-r from-cyan-800 to-orange-100 tex-white">
         <div className="flex flex-col w-1/2">
             <div className="h-1/2 text-8xl p-2">
-                <div className="border-2 border-red-500 h-5/6 w-5/6 ml-12">
+                <div className="h-5/6 w-5/6 ml-12">
                     <MapContainerWrapper cityData={cityData}/>
                 </div>
                 <div className=" h-12 m-2 flex items-center justify-center rounded-full bg-opacity-50 bg-slate-400">
