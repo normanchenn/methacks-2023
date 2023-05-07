@@ -34,119 +34,20 @@ app.get("/api/itinerary/:countryName", async (req, res) => {
     const attractions = getTouristAttractions(attractionContent, countryName);
     // console.log(attractions);
 
-    const airportPath = "./airports.txt";
-    readFileToString(airportPath, async (error, airportContent) => {
-      if (error) {
-        console.error("Error reading file:", error);
-        return;
-      }
+    const weatherDependentAttractions = await suitableAttractions(attractions);
+    // console.log("Weather-dependent attractions:", weatherDependentAttractions);
 
-      const airports = await getInternationalAirportsByCountry(
-        airportContent,
-        countryName
-      );
-      console.log(airports);
+    const finalAttractions = await processAttractions(attractions);
+    const attractionCoordinates = await getAttractionCoordinates(
+      finalAttractions
+    );
+    // console.log(attractionCoordinates);
 
-      const weatherDependentAttractions = await suitableAttractions(
-        attractions
-      );
-      console.log(
-        "Weather-dependent attractions:",
-        weatherDependentAttractions
-      );
-
-      const finalAttractions = await processAttractions(attractions);
-      const attractionCoordinates = await getAttractionCoordinates(
-        finalAttractions
-      );
-      console.log(attractionCoordinates);
-
-      const optimalOrderVisit = await getOptimalOrderOfVisit(
-        attractionCoordinates
-      );
-      console.log(optimalOrderVisit);
-
-      const nearestAirport = await getNearestAirport();
-      console.log(nearestAirport);
-
-      const airportArray = allAirports(airportContent);
-      // console.log(airportArray);
-
-      const match = findClosestMatch(nearestAirport, airportArray);
-      console.log("the closest match is: " + match);
-
-      const departureCode = findAirportCode(match, airportContent);
-      console.log(departureCode);
-
-      var availableFlights = [];
-      var availableFlightsLeastLayover = [];
-      for (let i = 0; i < airports.length; i++) {
-        const curAirportCode = airports[i];
-        try {
-          const curFlights = await flightPlanner(
-            departureCode,
-            curAirportCode,
-            "2023-05-08"
-          );
-          console.log(curFlights);
-          availableFlights = availableFlights.concat(curFlights);
-        } catch (error) {
-          console.error(
-            `Failed to retrieve flights for ${curAirportCode}: ${error}`
-          );
-        }
-      }
-      for (let i = 0; i < airports.length; i++) {
-        const curAirportCode = airports[i];
-        try {
-          const curFlights = await flightPlannerLeastLayover(
-            departureCode,
-            curAirportCode,
-            "2023-05-08"
-          );
-          console.log(curFlights);
-          availableFlightsLeastLayover =
-            availableFlightsLeastLayover.concat(curFlights);
-        } catch (error) {
-          console.error(
-            `Failed to retrieve flights for ${curAirportCode}: ${error}`
-          );
-        }
-      }
-
-      function filterCheapestFlights(flights) {
-        const sortedFlights = flights.sort((a, b) => {
-          const priceA = parseFloat(a.price.total);
-          const priceB = parseFloat(b.price.total);
-          return priceA - priceB;
-        });
-        const cheapestFlights = sortedFlights.slice(0, 3);
-
-        return cheapestFlights;
-      }
-
-      function filterFewestLayovers(flights) {
-        const sortedFlights = flights.sort((a, b) => {
-          const layoversA = a.itineraries[0].segments.length - 1; // Assuming itineraries always have at least one segment
-          const layoversB = b.itineraries[0].segments.length - 1;
-          return layoversA - layoversB;
-        });
-        const flightWithFewestLayovers = sortedFlights.slice(0, 3);
-        return flightWithFewestLayovers;
-      }
-
-      const cheapestFlights = filterCheapestFlights(availableFlights);
-      const leastLayoverFlights = filterFewestLayovers(
-        availableFlightsLeastLayover
-      );
-      console.log(cheapestFlights);
-      console.log(leastLayoverFlights);
-
-      // res.send(availableFlights);
-
-      // res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
-      res.send(optimalOrderVisit);
-    });
+    const optimalOrderVisit = await getOptimalOrderOfVisit(
+      attractionCoordinates
+    );
+    console.log(optimalOrderVisit);
+    res.send(optimalOrderVisit);
   });
 });
 
@@ -218,7 +119,7 @@ app.get("/api/flights/:countryName", async (req, res) => {
         const priceB = parseFloat(b.price.total);
         return priceA - priceB;
       });
-      const cheapestFlights = sortedFlights.slice(0, 3);
+      const cheapestFlights = sortedFlights.slice(0, 1);
 
       return cheapestFlights;
     }
@@ -229,7 +130,7 @@ app.get("/api/flights/:countryName", async (req, res) => {
         const layoversB = b.itineraries[0].segments.length - 1;
         return layoversA - layoversB;
       });
-      const flightWithFewestLayovers = sortedFlights.slice(0, 3);
+      const flightWithFewestLayovers = sortedFlights.slice(0, 1);
       return flightWithFewestLayovers;
     }
 
@@ -239,6 +140,9 @@ app.get("/api/flights/:countryName", async (req, res) => {
     );
     console.log(cheapestFlights);
     console.log(leastLayoverFlights);
+
+    const combinedFlights = cheapestFlights.concat(leastLayoverFlights);
+    res.send(combinedFlights);
   });
 });
 
