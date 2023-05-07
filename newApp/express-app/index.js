@@ -60,25 +60,40 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
 
 
       const nearestAirport = await getNearestAirport();
-      // console.log(nearestAirport);
-      res.send("The nearest airport is: " + nearestAirport + "\n");
+      console.log(nearestAirport);
 
       const airportArray = allAirports(airportContent);
       // console.log(airportArray);
 
       const match = findClosestMatch(nearestAirport, airportArray);
-      // console.log("the closest match is: " + match);
-      res.send("The closest match is: " + match + "\n");
+      console.log("the closest match is: " + match);
 
       const departureCode = findAirportCode(match, airportContent);
-      // console.log(departureCode);
-      res.send("The departure code is: " + departureCode + "\n");
+      console.log(departureCode);
 
       var availableFlights = [];
+      var availableFlightsLeastLayover = [];
       for (let i = 0; i < airports.length; i++) {
         const curAirportCode = airports[i];
         try {
           const curFlights = await flightPlanner(
+            departureCode,
+            curAirportCode,
+            "2023-05-08"
+          );
+          console.log(curFlights);
+          availableFlights = availableFlights.concat(curFlights);
+        
+        } catch (error) {
+          console.error(
+            `Failed to retrieve flights for ${curAirportCode}: ${error}`
+          );
+        }
+      }
+      for (let i = 0; i < airports.length; i++) {
+        const curAirportCode = airports[i];
+        try {
+          const curFlights = await flightPlannerLeastLayover(
             departureCode,
             curAirportCode,
             "2023-05-08"
@@ -563,6 +578,73 @@ async function flightPlanner(origin, destination, date) {
           );
         const cheapestFlights = filteredFlights.slice(0, 3);
         return cheapestFlights;
+      } catch (error) {
+        console.error(error.response?.data || error.message);
+        throw new Error("Failed to retrieve flight offers");
+      }
+    };
+
+    const flights = await searchFlightOffers();
+    return flights;
+  } catch (error) {
+    console.error(error);
+    throw new Error("An unexpected error occurred");
+  }
+}
+
+async function flightPlannerLeastLayover(origin, destination, date) {
+  const clientId = process.env.AMADEUS_API_KEY;
+  const clientSecret = process.env.AMADEUS_API_SECRET;
+
+  try {
+    const getAccessToken = async (apiKey, apiSecret) => {
+      const baseUrl = "https://test.api.amadeus.com/v1";
+      const tokenEndpoint = "/security/oauth2/token";
+
+      try {
+        const response = await axios.post(
+          `${baseUrl}${tokenEndpoint}`,
+          `grant_type=client_credentials&client_id=${apiKey}&client_secret=${apiSecret}`,
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
+        return response.data.access_token;
+      } catch (error) {
+        console.error(error.response.data);
+        throw new Error("Failed to retrieve access token");
+      }
+    };
+
+    const searchFlightOffers = async () => {
+      const baseUrl = "https://test.api.amadeus.com/v2";
+
+      try {
+        const accessToken = await getAccessToken(clientId, clientSecret);
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        };
+        const params = {
+          originLocationCode: origin,
+          destinationLocationCode: destination,
+          departureDate: date,
+          adults: 2,
+        };
+        const response = await axios.get(`${baseUrl}/shopping/flight-offers`, {
+          headers,
+          params,
+        });
+
+        const jsonData = response.data;
+        const filteredFlights = jsonData.data
+          .filter((flight) => flight.price && flight.price.grandTotal)
+          .sort((a, b) => a.itineraries[0].segments.length - b.itineraries[0].segments.length);
+        const shortestLayoversFlights = filteredFlights.slice(0, 3);
+        return shortestLayoversFlights;
       } catch (error) {
         console.error(error.response?.data || error.message);
         throw new Error("Failed to retrieve flight offers");
