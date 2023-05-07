@@ -23,7 +23,7 @@ export const Interests = () => {
             setIsDone(false);
         }
       }, [interests]);
-  return (
+  return (  
     <div className="flex flex-row h-screen bg-gradient-to-b from-cyan-800 to-gray-100 text-white">
         <div className="flex flex-col w-1/2">
             <div className="h-1/2 text-8xl p-12">Enter Keywords</div>
