@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.get("/api/suitableAttractions/:countryName", (req, res) => {
+app.get("/api/suitableAttractions/:countryName", async (req, res) => {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
@@ -24,29 +24,52 @@ app.get("/api/suitableAttractions/:countryName", (req, res) => {
   console.log(`The current season is: ${currentSeason}`);
 
   const attractionPath = "./attractions.txt";
-  readFileToString(attractionPath, (error, attractionContent) => {
+  const { countryName } = req.params;
+
+  readFileToString(attractionPath, async (error, attractionContent) => {
     if (error) {
       console.error("Error reading file:", error);
       return;
     }
-    const { countryName } = req.params;
     const attractions = getTouristAttractions(attractionContent, countryName);
     console.log(attractions);
+
     const airportPath = "./airports.txt";
-    readFileToString(airportPath, (error, airportContent) => {
+    readFileToString(airportPath, async (error, airportContent) => {
       if (error) {
         console.error("Error reading file:", error);
         return;
       }
+
       const airports = getInternationalAirportsByCountry(
         airportContent,
         countryName
       );
       console.log(airports);
-    });
+
+      const weatherDependentAttractions = await suitableAttractions(
+        attractions
+      );
+      console.log(
+        "Weather-dependent attractions:",
+        weatherDependentAttractions
+      );
+
       processAttractions(attractions);
+
+      const internationalAirports = await getInternationalAirportsByCountry(
+        countryName
+      );
+      const nearestAirport = await getNearestAirport();
+      const airportArray = allAirports(airportContent);
+      console.log(airportArray);
+      console.log(nearestAirport);
+      const match = findClosestMatch(nearestAirport, airportArray);
+      console.log("the closest match is: " + match);
+
+      res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
+    });
   });
-  res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
 });
 
 // fetch metadata for cities
@@ -202,49 +225,6 @@ app.get(
   }
 );
 
-// takes your location, and outputs your nearest airport
-app.get("/api/googlemaps/neareastAirport", async (req, res) => {
-  const apiKey = process.env.GOOGLE_MAP_API_KEY;
-  const accessKey = process.env.AVIATION_STACK_API_KEY;
-  // const airportName = "Toronto Pearson International Airport";
-
-  try {
-    const response = await axios.post(
-      `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
-    );
-    const { lat, lng } = response.data.location;
-
-    const location = `${lat},${lng}`;
-    const radius = 5000000;
-    const keyword = "airport";
-    const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location}&radius=${radius}&keyword=${keyword}&key=${apiKey}`;
-
-    try {
-      const response = await axios.get(placesUrl);
-      const results = response.data.results;
-
-      if (results.length > 0) {
-        const airport = results[0];
-        const airportCode = await getAirportIataCode(airport.name);
-        console.log("Airport Code:", airportCode); // Log the airport code
-        const nearestAirport = {
-          name: airport.name,
-          code: airportCode,
-        };
-        res.json(nearestAirport); // Send the response to the client
-      } else {
-        throw new Error("No airports found near the location.");
-      }
-    } catch (error) {
-      console.error("Error retrieving nearest airport:", error);
-      res.status(500).send("Error retrieving nearest airport");
-    }
-  } catch (error) {
-    console.error("Error getting user location:", error);
-    res.status(500).send("Error getting user location");
-  }
-});
-
 app.get("/", (req, res) => {
   res.send("Hello World!, from new app");
 });
@@ -255,7 +235,6 @@ app.listen(PORT, () => {
 });
 
 /* helper functions */
-
 function getSeason(date) {
   const month = date.getMonth() + 1;
   const day = date.getDate();
@@ -324,7 +303,7 @@ function getTouristAttractions(text, countryName) {
   return attractions;
 }
 
-function readFileToString(filePath, callback) {
+async function readFileToString(filePath, callback) {
   fs.readFile(filePath, "utf-8", (error, data) => {
     if (error) {
       callback(error, null);
@@ -369,7 +348,7 @@ async function processAttractions(attractions) {
   console.log("Weather dependent attractions:", weatherDependentAttractions);
 }
 
-function getInternationalAirportsByCountry(data, countryName) {
+async function getInternationalAirportsByCountry(data, countryName) {
   var lines = data.split("\n");
   var result = [];
 
@@ -389,4 +368,99 @@ function getInternationalAirportsByCountry(data, countryName) {
     }
   }
   return result;
+}
+
+function allAirports(data) {
+  var result = [];
+  var lines = data.split("\n");
+
+  for (let i = 0; i < lines.length; i++) {
+    const entry = lines[i];
+    const [country = "", airport = "", code = ""] = entry.split(",");
+    result.push(airport.trim());
+
+    console.log(`Country: ${country.trim()}`);
+    console.log(`Airport: ${airport.trim()}`);
+    console.log(`Code: ${code.trim()}`);
+    console.log("--------------------");
+  }
+  return result;
+}
+
+async function getNearestAirport() {
+  const apiKey = process.env.GOOGLE_MAP_API_KEY;
+
+  try {
+    const response = await axios.post(
+      `https://www.googleapis.com/geolocation/v1/geolocate?key=${apiKey}`
+    );
+    const { lat, lng } = response.data.location;
+
+    const location = `${lat},${lng}`;
+    const radius = 5000000;
+    const keyword = "airport";
+    const placesUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location}&radius=${radius}&keyword=${keyword}&key=${apiKey}`;
+
+    try {
+      const response = await axios.get(placesUrl);
+      const results = response.data.results;
+      if (results.length > 0) {
+        const airport = results[0];
+        const airportName = airport.name;
+        return airportName;
+      } else {
+        throw new Error("No airports found near the location.");
+      }
+    } catch (error) {
+      console.error("Error retrieving nearest airport:", error);
+    }
+  } catch (error) {
+    console.error("Error getting user location:", error);
+  }
+}
+
+function findClosestMatch(str, arr) {
+  let closestMatch = null;
+  let closestDistance = Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    const currentStr = arr[i];
+    const distance = calculateLevenshteinDistance(str, currentStr);
+
+    if (distance < closestDistance) {
+      closestMatch = currentStr;
+      closestDistance = distance;
+    }
+  }
+
+  return closestMatch;
+}
+
+function calculateLevenshteinDistance(str1, str2) {
+  const m = str1.length;
+  const n = str2.length;
+  const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
+
+  for (let i = 0; i <= m; i++) {
+    dp[i][0] = i;
+  }
+
+  for (let j = 0; j <= n; j++) {
+    dp[0][j] = j;
+  }
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (str1[i - 1] === str2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.min(
+          dp[i - 1][j] + 1,
+          dp[i][j - 1] + 1,
+          dp[i - 1][j - 1] + 1
+        );
+      }
+    }
+  }
+  return dp[m][n];
 }
