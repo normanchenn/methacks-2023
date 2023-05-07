@@ -67,6 +67,9 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
       const match = findClosestMatch(nearestAirport, airportArray);
       console.log("the closest match is: " + match);
 
+      const departureCode = findAirportCode(match, airportContent);
+      console.log(departureCode);
+
       res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
     });
   });
@@ -385,6 +388,20 @@ function allAirports(data) {
     console.log("--------------------");
   }
   return result;
+}
+
+function findAirportCode(airportName, data) {
+  var lines = data.split("\n");
+
+  for (let i = 0; i < lines.length; i++) {
+    const entry = lines[i];
+    const [country = "", airport = "", code = ""] = entry.split(",");
+    const curAirport = airport.trim();
+    if(curAirport === airportName) {
+      return code;
+    }
+  }
+  return null;
 }
 
 async function getNearestAirport() {
