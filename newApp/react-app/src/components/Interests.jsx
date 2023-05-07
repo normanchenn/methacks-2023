@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Interests = () => {
     const [interests, setInterests] = useState([]);
     const [isDone, setIsDone] = useState(false);
+    const [responses, setResponses] = useState([]);
+    const navigate = useNavigate();
     const addInterest = (event) => {
         event.preventDefault();
         const newInterest = event.target.interest.value;
@@ -23,6 +26,30 @@ export const Interests = () => {
             setIsDone(false);
         }
       }, [interests]);
+      const handleSubmit = () => {
+        const promises = interests.map(interest =>
+          fetch(`http://localhost:4321/api/cohere/hobbies/${interest}`)
+            .then(response => response.json())
+            .catch(error => console.error(error))
+        );
+        
+        Promise.all(promises)
+          .then(data => {
+            console.log(data);
+            setResponses(data);
+            // sessionStorage.setItem('responses', JSON.stringify(responses));
+            // navigate('/inputs');
+
+          })
+          .catch(error => console.error(error));
+      }
+      useEffect(() => {
+        sessionStorage.setItem('responses', JSON.stringify(responses))
+        if (isDone === true){
+            navigate('/inputs');
+        }
+      }, [responses]);
+
   return (  
     <div className="flex flex-row h-screen bg-gradient-to-b from-cyan-800 to-gray-100 text-white">
         <div className="flex flex-col w-1/2">
@@ -42,7 +69,9 @@ export const Interests = () => {
                     </div>
                 ))}
             </div>
-            {isDone && <Link to="/inputs" className="flex justify-center"><div className="bg-white text-black rounded-lg h-20 w-1/2 flex items-center border-2 border-black"><p className="w-full">Done</p></div></Link>}
+            {/* {isDone && <Link to="/inputs" className="flex justify-center"><div className="bg-white text-black rounded-lg h-20 w-1/2 flex items-center border-2 border-black"><p className="w-full">Done</p></div></Link>} */}
+            {/* {isDone && <button className="flex justify-center"><div className="bg-white text-black rounded-lg h-20 w-1/2 flex items-center border-2 border-black"><p className="w-full">Done</p></div></button>} */}
+            {isDone && <div className="flex justify-center"><button onClick={handleSubmit} className="bg-white text-black rounded-lg h-20 w-1/2 flex items-center border-2 border-black"><p className="w-full">Done</p></button></div>}
         </div>
         {/* <div className="mt-auto mb-5">
           <Link
