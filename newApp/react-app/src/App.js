@@ -3,6 +3,7 @@ import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Welcome } from './components/Welcome';
 import { Interests } from './components/Interests';
 import { Inputs } from './components/Inputs';
+import { Inputs2 } from './components/Inputs2';
 import { Stats } from './components/Stats';
 import { Results } from './components/Results';
 import { About } from './components/About';
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/" element={<Welcome />} />
         <Route path="/interests" element={<Interests />} />
         <Route path="/inputs" element={<Inputs />} />
+        <Route path="/inputs2" element={<Inputs2 />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/results" element={<Results />} />
         <Route path="/about" element={<About />} />

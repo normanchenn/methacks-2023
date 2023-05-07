@@ -32,7 +32,7 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
       return;
     }
     const attractions = getTouristAttractions(attractionContent, countryName);
-    console.log(attractions);
+    // console.log(attractions);
 
     const airportPath = "./airports.txt";
     readFileToString(airportPath, async (error, airportContent) => {
@@ -41,7 +41,7 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
         return;
       }
 
-      const airports = getInternationalAirportsByCountry(
+      const airports = await getInternationalAirportsByCountry(
         airportContent,
         countryName
       );
@@ -57,20 +57,60 @@ app.get("/api/suitableAttractions/:countryName", async (req, res) => {
 
       processAttractions(attractions);
 
-      const internationalAirports = await getInternationalAirportsByCountry(
-        countryName
-      );
+
+
       const nearestAirport = await getNearestAirport();
-      const airportArray = allAirports(airportContent);
-      console.log(airportArray);
       console.log(nearestAirport);
+
+      const airportArray = allAirports(airportContent);
+      // console.log(airportArray);
+
       const match = findClosestMatch(nearestAirport, airportArray);
       console.log("the closest match is: " + match);
 
       const departureCode = findAirportCode(match, airportContent);
       console.log(departureCode);
 
-      res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
+      var availableFlights = [];
+      var availableFlightsLeastLayover = [];
+      for (let i = 0; i < airports.length; i++) {
+        const curAirportCode = airports[i];
+        try {
+          const curFlights = await flightPlanner(
+            departureCode,
+            curAirportCode,
+            "2023-05-08"
+          );
+          console.log(curFlights);
+          availableFlights = availableFlights.concat(curFlights);
+        
+        } catch (error) {
+          console.error(
+            `Failed to retrieve flights for ${curAirportCode}: ${error}`
+          );
+        }
+      }
+      for (let i = 0; i < airports.length; i++) {
+        const curAirportCode = airports[i];
+        try {
+          const curFlights = await flightPlannerLeastLayover(
+            departureCode,
+            curAirportCode,
+            "2023-05-08"
+          );
+          console.log(curFlights);
+          availableFlights = availableFlights.concat(curFlights);
+        
+        } catch (error) {
+          console.error(
+            `Failed to retrieve flights for ${curAirportCode}: ${error}`
+          );
+        }
+      }
+      // console.log(availableFlights);
+      // res.send(availableFlights);
+
+      // res.send(`Hello world, from methacks! Today's date is ${formattedDate}.`);
     });
   });
 });
@@ -365,7 +405,7 @@ async function getInternationalAirportsByCountry(data, countryName) {
         var airportCode = parts[2].trim();
 
         if (country === countryName) {
-          result.push([airportName, airportCode]);
+          result.push(airportCode);
         }
       }
     }
@@ -382,10 +422,10 @@ function allAirports(data) {
     const [country = "", airport = "", code = ""] = entry.split(",");
     result.push(airport.trim());
 
-    console.log(`Country: ${country.trim()}`);
-    console.log(`Airport: ${airport.trim()}`);
-    console.log(`Code: ${code.trim()}`);
-    console.log("--------------------");
+    // console.log(`Country: ${country.trim()}`);
+    // console.log(`Airport: ${airport.trim()}`);
+    // console.log(`Code: ${code.trim()}`);
+    // console.log("--------------------");
   }
   return result;
 }
@@ -397,7 +437,7 @@ function findAirportCode(airportName, data) {
     const entry = lines[i];
     const [country = "", airport = "", code = ""] = entry.split(",");
     const curAirport = airport.trim();
-    if(curAirport === airportName) {
+    if (curAirport === airportName) {
       return code;
     }
   }
@@ -480,4 +520,141 @@ function calculateLevenshteinDistance(str1, str2) {
     }
   }
   return dp[m][n];
+}
+
+async function flightPlanner(origin, destination, date) {
+  const clientId = process.env.AMADEUS_API_KEY;
+  const clientSecret = process.env.AMADEUS_API_SECRET;
+
+  try {
+    const getAccessToken = async (apiKey, apiSecret) => {
+      const baseUrl = "https://test.api.amadeus.com/v1";
+      const tokenEndpoint = "/security/oauth2/token";
+
+      try {
+        const response = await axios.post(
+          `${baseUrl}${tokenEndpoint}`,
+          `grant_type=client_credentials&client_id=${apiKey}&client_secret=${apiSecret}`,
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
+        return response.data.access_token;
+      } catch (error) {
+        console.error(error.response.data);
+        throw new Error("Failed to retrieve access token");
+      }
+    };
+
+    const searchFlightOffers = async () => {
+      const baseUrl = "https://test.api.amadeus.com/v2";
+
+      try {
+        const accessToken = await getAccessToken(clientId, clientSecret);
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        };
+        const params = {
+          originLocationCode: origin,
+          destinationLocationCode: destination,
+          departureDate: date,
+          adults: 2,
+        };
+        const response = await axios.get(`${baseUrl}/shopping/flight-offers`, {
+          headers,
+          params,
+        });
+
+        const jsonData = response.data;
+        const filteredFlights = jsonData.data
+          .filter((flight) => flight.price && flight.price.grandTotal)
+          .sort(
+            (a, b) =>
+              parseFloat(a.price.grandTotal) - parseFloat(b.price.grandTotal)
+          );
+        const cheapestFlights = filteredFlights.slice(0, 3);
+        return cheapestFlights;
+      } catch (error) {
+        console.error(error.response?.data || error.message);
+        throw new Error("Failed to retrieve flight offers");
+      }
+    };
+
+    const flights = await searchFlightOffers();
+    return flights;
+  } catch (error) {
+    console.error(error);
+    throw new Error("An unexpected error occurred");
+  }
+}
+
+async function flightPlannerLeastLayover(origin, destination, date) {
+  const clientId = process.env.AMADEUS_API_KEY;
+  const clientSecret = process.env.AMADEUS_API_SECRET;
+
+  try {
+    const getAccessToken = async (apiKey, apiSecret) => {
+      const baseUrl = "https://test.api.amadeus.com/v1";
+      const tokenEndpoint = "/security/oauth2/token";
+
+      try {
+        const response = await axios.post(
+          `${baseUrl}${tokenEndpoint}`,
+          `grant_type=client_credentials&client_id=${apiKey}&client_secret=${apiSecret}`,
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
+        return response.data.access_token;
+      } catch (error) {
+        console.error(error.response.data);
+        throw new Error("Failed to retrieve access token");
+      }
+    };
+
+    const searchFlightOffers = async () => {
+      const baseUrl = "https://test.api.amadeus.com/v2";
+
+      try {
+        const accessToken = await getAccessToken(clientId, clientSecret);
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        };
+        const params = {
+          originLocationCode: origin,
+          destinationLocationCode: destination,
+          departureDate: date,
+          adults: 2,
+        };
+        const response = await axios.get(`${baseUrl}/shopping/flight-offers`, {
+          headers,
+          params,
+        });
+
+        const jsonData = response.data;
+        const filteredFlights = jsonData.data
+          .filter((flight) => flight.price && flight.price.grandTotal)
+          .sort((a, b) => a.itineraries[0].segments.length - b.itineraries[0].segments.length);
+        const shortestLayoversFlights = filteredFlights.slice(0, 3);
+        return shortestLayoversFlights;
+      } catch (error) {
+        console.error(error.response?.data || error.message);
+        throw new Error("Failed to retrieve flight offers");
+      }
+    };
+
+    const flights = await searchFlightOffers();
+    return flights;
+  } catch (error) {
+    console.error(error);
+    throw new Error("An unexpected error occurred");
+  }
 }

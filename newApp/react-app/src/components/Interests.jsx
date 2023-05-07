@@ -24,7 +24,7 @@ export const Interests = () => {
         }
       }, [interests]);
   return (
-    <div className="flex flex-row h-screen bg-gradient-to-b from-cyan-800 to-orange-100 text-white">
+    <div className="flex flex-row h-screen bg-gradient-to-b from-cyan-800 to-gray-100 text-white">
         <div className="flex flex-col w-1/2">
             <div className="h-1/2 text-8xl p-12">Enter Keywords</div>
             <div className="h-1/2 text-6xl p-12">Tell us what you're interested in!</div>
