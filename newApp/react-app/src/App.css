@@ -12,4 +12,23 @@ div[data-testid="app"] {
   animation: fadeIn 2s ease-in-out 0.5s forwards;
 }
 
+@keyframes bobbing {
+  0% {
+    transform: translateX(-8px);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(-8px);
+  }
+}
+
+.bobbing {
+  animation-name: bobbing;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
 

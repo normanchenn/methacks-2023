@@ -54,7 +54,7 @@ export const Interests = () => {
     <div className="flex flex-row h-screen bg-gradient-to-b from-cyan-800 to-gray-100 text-white">
         <div className="flex flex-col w-1/2">
             <div className="h-1/2 text-8xl p-12">Enter Keywords</div>
-            <div className="h-1/2 text-6xl p-12">Tell us what you're interested in!</div>
+            <div className="h-1/2 text-6xl p-12 bobbing">Tell us what you're interested in!</div>
         </div>
         <div className="flex-grow rounded-3xl m-24 bg-stone-300 justify-center text-center">
             <form onSubmit={addInterest} className="rounded-full w-95 h-10 text-black px-4 m-4 bg-white flex flex-row">
