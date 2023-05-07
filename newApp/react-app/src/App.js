@@ -1,18 +1,41 @@
 import './App.css';
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CitySummary } from './components/CitySummary';
 import { GenerateRec } from './components/GenerateRec';
 import { UserPreferences } from './components/UserPreferences';
+import { Welcome } from './components/Welcome';
+import { Interests } from './components/Interests';
+import { Inputs } from './components/Inputs';
+import { Stats } from './components/Stats';
+import { Results } from './components/Results';
+import { About } from './components/About';
+
 
 function App() {
   return (
-    <div className="App">
-      <div className="text-red-500">
+    <Router>
+      <nav>
+        <ul>
+          <li><Link to="/">Logo!</Link></li>
+          <li><Link to="/something">something</Link></li>
+          <li><Link to="/about">About Us</Link></li>
+        </ul>
+      </nav>
+      {/* <div className="text-red-500">
         test
       </div>
       <CitySummary />
       <GenerateRec />
-      <UserPreferences />
-    </div>
+      <UserPreferences /> */}
+      <Routes>
+        <Route exact path="/" element={<Welcome />} />
+        <Route path="/interests" element={<Interests />} />
+        <Route path="/inputs" element={<Inputs />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/results" element={<Results />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 
