@@ -23,17 +23,18 @@ export const Interests = () => {
             setIsDone(false);
         }
       }, [interests]);
-  return (
-    <div className="flex flex-row h-screen bg-gradient-to-b from-cyan-800 to-orange-100 text-white">
+  return (  
+    <div className="flex flex-row h-screen bg-gradient-to-b from-cyan-800 to-gray-100 text-white">
         <div className="flex flex-col w-1/2">
             <div className="h-1/2 text-8xl p-12">Enter Keywords</div>
             <div className="h-1/2 text-6xl p-12">Tell us what you're interested in!</div>
         </div>
         <div className="flex-grow rounded-3xl m-24 bg-stone-300 justify-center text-center">
             <form onSubmit={addInterest} className="rounded-full w-95 h-10 text-black px-4 m-4 bg-white flex flex-row">
-                <input type="text" placeholder="Enter Hobbies" name="interest" className="basis-10/12"/>
+                <input type="text" placeholder="Enter Hobbies" name="interest" className="basis-10/12 outline-none"/>
                 <button type="submit" className="px-2 text-gray-500">Add</button>
             </form>
+
             <div className="text-black grid grid-cols-2">
                 {interests.map((interest) => (
                     <div key={interest} className="w-full p-6">
@@ -43,6 +44,13 @@ export const Interests = () => {
             </div>
             {isDone && <Link to="/inputs" className="flex justify-center"><div className="bg-white text-black rounded-lg h-20 w-1/2 flex items-center border-2 border-black"><p className="w-full">Done</p></div></Link>}
         </div>
+        {/* <div className="mt-auto mb-5">
+          <Link
+            to="/inputs"
+            className="text-black hover:underline bg-white rounded-full py-2 px-4 hover:scale-110 transition duration-500 ease-in-out">
+            Skip
+          </Link>
+        </div> */}
     </div>
   )
 }
