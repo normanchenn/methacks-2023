@@ -3,10 +3,10 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 const mapStyles = {
   position: 'fixed',
-  top: '3%',
-  left: '3%',
-  width: '37%',
-  height: '45%',
+  top: '0%',
+  left: '0%',
+  width: '40%',
+  height: '40%',
   zIndex: '1'
 };
 

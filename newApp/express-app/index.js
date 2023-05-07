@@ -135,8 +135,35 @@ const citySchema = new mongoose.Schema({
   latitude: { type: Number, required: true },
   longitude: { type: Number, required: true },
 });
-
 const City = mongoose.model("City2", citySchema);
+
+// const newCity = new City({
+//     name: "San Francisco",
+//     country: "United States",
+//     region: "California",
+//     population: 883305,
+//     timezone: "PST",
+//     currency: "US Dollar",
+//     language: "English",
+//     population_attractions: [
+//       "Golden Gate Bridge",
+//       "Alcatraz Island",
+//       "Fisherman's Wharf",
+//     ],
+//     emergency_service_number: 911,
+//     local_customs: ["Wearing flowers in the hair", "Tech industry"],
+//     local_cuisine: ["Sourdough bread", "Cioppino", "Mission-style burritos"],
+//     latitude: 37.7749,
+//     longitude: -122.4194,
+//   });
+//   newCity.save()
+//       .then(city => {
+//           console.log(`saved ${city.name} to the database`);
+//       })
+//       .catch(error => {
+//           console.error(`Error saving ${newCity.name} to the database: ${error}`);
+//       });
+
 app.get("/api/cities/:name", async (req, res) => {
   const { name } = req.params;
   try {
@@ -157,12 +184,14 @@ app.get("/api/cohere/citySummary/:city", async (req, res) => {
     cohere.init(process.env.COHERE_API_KEY);
     const { city } = req.params;
     const response = await cohere.generate({
-      prompt: `Give me a summary of ${city}`,
+      prompt: `Give me a summary of ${city}.`,
       model: "ca5f4bac-9c09-4770-bf7a-d043739e82a7-ft",
       max_tokens: 100,
     });
     console.log(JSON.stringify(response, null, 3));
-    res.send(JSON.stringify(response, null, 3));
+    // res.send(JSON.stringify(response, null, 3));
+    res.send(JSON.stringify(response.body.generations[0].text));
+    console.log(JSON.stringify(response.body.generations[0].text));
   } catch (error) {
     console.error("Error classifying data:", error);
     res.status(400).json({ error: "An error occurred while classifying data" });
@@ -179,8 +208,8 @@ app.get("/api/cohere/hobbies/:interest", async (req, res) => {
       model: "de9da453-d1be-4e48-a53e-2e3f6c479361-ft",
       max_tokens: 100,
     });
-    console.log(JSON.stringify(response, null, 3));
-    res.send(JSON.stringify(response, null, 3));
+    console.log(JSON.stringify(response.body.classifications[0].prediction));
+    res.send(JSON.stringify(response.body.classifications[0].prediction));
   } catch (error) {
     console.error("Error classifying data:", error);
     res.status(400).json({ error: "An error occurred while classifying data" });

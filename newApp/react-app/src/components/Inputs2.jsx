@@ -25,7 +25,7 @@ export const Inputs2 = () => {
   return (
 
     <div className="bg-gradient-to-b from-orange-100 to-cyan-800 h-screen flex flex-col">
-        <div className=" h-20 flex items-center justify-center m-24 rounded-full opacity-50 bg-slate-400"><p className="text-4xl text-white">How many days will you visit? (2/2)</p></div>
+        <div className=" h-20 flex items-center justify-center m-24 rounded-full bg-opacity-50 bg-slate-400"><p className="text-4xl text-white">How many days will you visit? (2/2)</p></div>
             {/* <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter text" /> */}
         <form className="flex items-center justify-center px-60" onSubmit={handleSubmit}>
             <input type="text" onChange={handleChange} className="border-b border-gray-500 outline-none bg-transparent w-full text-6xl p-4 text-center text-white" />
