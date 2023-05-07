@@ -15,27 +15,32 @@ const MapContainer = (props) => {
   const [showMap, setShowMap] = useState(false);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [initialized, setInitialized] = useState(false); // new state variable
 
   useEffect(() => {
     if (cityData) {
+      console.log('cityData:', cityData);
       const { latitude, longitude } = cityData;
+      console.log('latitude:', latitude, 'longitude:', longitude);
       setLatitude(parseFloat(latitude) || 0);
       setLongitude(parseFloat(longitude) || 0);
-      setShowMap(true);
+      setInitialized(true); // update initialized state
+      setShowMap(true); // set showMap to true after initializing the component
     }
   }, [cityData]);
+  
 
   return (
     <>
-      {showMap && (
+      {initialized && showMap && ( // only render map if initialized and showMap are both true
         <Map
           google={google}
           zoom={8}  
           style={mapStyles}
-          center={{ lat: latitude || 0, lng: longitude || 0 }}
+          center={{ lat: latitude, lng: longitude}}
         >
           <Marker
-            position={{ lat: latitude || 0, lng: longitude || 0 }}
+            position={{ lat: latitude, lng: longitude}}
           />
         </Map>
       )}
@@ -43,8 +48,13 @@ const MapContainer = (props) => {
   );
 };
 
+const LoadingContainer = () => (
+  <div>Loading...</div>
+);
+
 const MapContainerWrapper = GoogleApiWrapper({
-  apiKey: 'AIzaSyDSuUPMgyRXTIgpUIWtBfWOyavLBdXsEJE'
+  apiKey: 'AIzaSyDSuUPMgyRXTIgpUIWtBfWOyavLBdXsEJE',
+  LoadingContainer: LoadingContainer,
 })(MapContainer);
 
 export default MapContainerWrapper;
